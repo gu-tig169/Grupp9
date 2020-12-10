@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/FakeRecipeList.dart';
 
 class RecipeView extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -7,15 +8,28 @@ class RecipeView extends StatelessWidget {
         backgroundColor: Colors.red,
         title: Text(
           'Recipe List',
-          style: TextStyle(color: Colors.black, fontSize: 24),
+          style: TextStyle(color: Colors.white, fontSize: 24),
         ),
-        actions: [IconButton(icon: Icon(Icons.delete), onPressed: () {})],
+        actions: [
+          Container(
+            margin: EdgeInsets.only(left: 0, right: 20),
+            child: DropdownButton(
+              icon: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
+              iconSize: 30,
+              items: [
+                DropdownMenuItem(child: Text('Favorites'), value: 'Favorites'),
+                DropdownMenuItem(
+                    child: Text('Filter Recipes'), value: 'Filter Recipes'),
+              ],
+              onChanged: (value) {},
+            ),
+          ),
+        ],
       ),
-      body: _recipeList(),
+      body: FakeRecipeList(),
     );
-  }
-
-  Widget _recipeList() {
-    return null;
   }
 }
