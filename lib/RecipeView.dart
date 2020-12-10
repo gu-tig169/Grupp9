@@ -11,10 +11,11 @@ class _RecipeViewState extends State<RecipeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.green[300],
         title: Text(
           'Recipe List',
-          style: TextStyle(color: Colors.white, fontSize: 24),
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic),
         ),
         actions: [
           Container(
@@ -42,7 +43,7 @@ class _RecipeViewState extends State<RecipeView> {
 
   Widget _search(BuildContext context) {
     return FloatingActionButton(
-        backgroundColor: (Colors.red),
+        backgroundColor: (Colors.green[300]),
         child: Icon(Icons.search),
         onPressed: () {
           Navigator.push(

@@ -10,40 +10,47 @@ class _SearchViewState extends State<SearchView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.green[300],
         centerTitle: true,
         title: Text(
-          "Search recipe",
-          style: TextStyle(color: Colors.black),
+          "Search for a recipe",
+          style: TextStyle(
+              color: Colors.white, fontStyle: FontStyle.italic, fontSize: 20),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            textField(),
-            saveSearch(context),
+            _pancakePhoto(),
+            _textField(),
+            _saveSearch(context),
           ],
         ),
       ),
     );
   }
 
-  Widget textField() {
+  Widget _textField() {
     return Container(
       padding: EdgeInsets.all(24),
       child: TextField(
         //controller: textEditingController,
         decoration: InputDecoration(
-          hintText: 'Search for recipe',
-          enabledBorder: const OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.black, width: 2),
+          hintText: 'Search',
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            borderSide: BorderSide(color: Colors.black, width: 2),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            borderSide: BorderSide(color: Colors.black, width: 2),
           ),
         ),
       ),
     );
   }
 
-  Widget saveSearch(BuildContext context) {
+  Widget _saveSearch(BuildContext context) {
     return Column(
       children: [
         FlatButton.icon(
@@ -54,6 +61,18 @@ class _SearchViewState extends State<SearchView> {
             style: TextStyle(fontSize: 16),
           ),
         )
+      ],
+    );
+  }
+
+  Widget _pancakePhoto() {
+    return Stack(
+      children: [
+        Image(
+            alignment: Alignment.topCenter,
+            height: 415,
+            image: NetworkImage(
+                'https://blog.williams-sonoma.com/wp-content/uploads/2020/02/stack-pancakes-blog-post-1000px.jpg'))
       ],
     );
   }
