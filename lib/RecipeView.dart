@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
+import 'package:projectapp/SearchView.dart';
 
-class RecipeView extends StatelessWidget {
+class RecipeView extends StatefulWidget {
+  @override
+  _RecipeViewState createState() => _RecipeViewState();
+}
+
+class _RecipeViewState extends State<RecipeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -30,6 +36,20 @@ class RecipeView extends StatelessWidget {
         ],
       ),
       body: FakeRecipeList(),
+      floatingActionButton: _search(context),
     );
+  }
+
+  Widget _search(BuildContext context) {
+    return FloatingActionButton(
+        backgroundColor: (Colors.red),
+        child: Icon(Icons.search),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SearchView(),
+              ));
+        });
   }
 }
