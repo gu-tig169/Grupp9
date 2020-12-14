@@ -18,21 +18,24 @@ class _RecipeViewState extends State<RecipeView> {
               color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic),
         ),
         actions: [
-          Container(
-            margin: EdgeInsets.only(left: 0, right: 20),
-            child: DropdownButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.white,
+          Row(
+            children: [
+              IconButton(icon: Icon(Icons.search), onPressed: () {}),
+              DropdownButton(
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ),
+                iconSize: 30,
+                items: [
+                  DropdownMenuItem(
+                      child: Text('Favorites'), value: 'Favorites'),
+                  DropdownMenuItem(
+                      child: Text('Filter Recipes'), value: 'Filter Recipes'),
+                ],
+                onChanged: (value) {},
               ),
-              iconSize: 30,
-              items: [
-                DropdownMenuItem(child: Text('Favorites'), value: 'Favorites'),
-                DropdownMenuItem(
-                    child: Text('Filter Recipes'), value: 'Filter Recipes'),
-              ],
-              onChanged: (value) {},
-            ),
+            ],
           ),
         ],
       ),
