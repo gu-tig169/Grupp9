@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/Fridge.dart';
 import 'package:projectapp/RecipeView.dart';
 
 void main() {
