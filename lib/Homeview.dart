@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/RecipeView.dart';
+import 'package:projectapp/FavoriteView.dart';
 
 class Homeview extends StatelessWidget {
   @override
@@ -70,7 +71,7 @@ class Homeview extends StatelessWidget {
                   )),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RecipeView()));
+                    MaterialPageRoute(builder: (context) => FavoriteView()));
               },
               icon: Icon(Icons.star, color: Colors.yellow[700]),
               label: Text('Favorites'),
