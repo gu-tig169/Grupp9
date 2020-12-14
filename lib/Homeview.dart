@@ -41,7 +41,7 @@ class Homeview extends StatelessWidget {
 
   Widget _introTextTwo() {
     return Text(
-      'Big Papas',
+      'Foodies',
       style: TextStyle(
           fontSize: 35,
           fontWeight: FontWeight.bold,

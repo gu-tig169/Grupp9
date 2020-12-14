@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
+import 'package:projectapp/FavoriteView.dart';
 import 'package:projectapp/SearchView.dart';
 
 class RecipeView extends StatefulWidget {
@@ -31,8 +32,6 @@ class _RecipeViewState extends State<RecipeView> {
                 ),
                 iconSize: 30,
                 items: [
-                  DropdownMenuItem(
-                      child: Text('Favorites'), value: 'Favorites'),
                   DropdownMenuItem(
                       child: Text('Filter Recipes'), value: 'Filter Recipes'),
                 ],
