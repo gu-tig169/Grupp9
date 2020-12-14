@@ -22,7 +22,7 @@ class FakeRecipeList extends StatelessWidget {
         ListTile(
             leading: Icon(
               Icons.star,
-              color: Colors.orange,
+              color: Colors.grey,
             ),
             trailing: Text('30 min'),
             title: Text('Pizza'),
@@ -35,7 +35,7 @@ class FakeRecipeList extends StatelessWidget {
         ListTile(
             leading: Icon(
               Icons.star,
-              color: Colors.orange,
+              color: Colors.grey,
             ),
             trailing: Text('7h'),
             title: Text('Koncz special'),
