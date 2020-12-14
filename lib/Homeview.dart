@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/Fridge.dart';
 import 'package:projectapp/RecipeView.dart';
 import 'package:projectapp/FavoriteView.dart';
 
@@ -90,8 +91,8 @@ class Homeview extends StatelessWidget {
                   side: BorderSide(color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RecipeView()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Fridge()));
               },
               icon: Icon(Icons.shuffle, color: Colors.yellow[700]),
               label: Text('Inspo'),

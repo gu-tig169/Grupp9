@@ -10,6 +10,7 @@ class FavoriteView extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
           ),
           backgroundColor: Colors.greenAccent[100],
+          centerTitle: true,
           title: Text(
             'Favorite List',
             style: TextStyle(

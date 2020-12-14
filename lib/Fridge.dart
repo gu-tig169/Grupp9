@@ -5,24 +5,18 @@ class Fridge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.green[300],
-          leading: Container(
-              alignment: Alignment.center,
-              child: Text(
-                'Back',
-                style: TextStyle(fontSize: 16),
-              )),
-          title: Text("What's in the fridge?", style: TextStyle(fontSize: 20)),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          backgroundColor: Colors.greenAccent[100],
+          title: Text("What's in the fridge?",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black)),
           centerTitle: true,
-          actions: [
-            Container(
-              alignment: Alignment.center,
-              margin: EdgeInsets.only(right: 15),
-              child: Text('Edit',
-                  style:
-                      TextStyle(fontSize: 16)), //lägg senare in funktionalitet
-            ),
-          ]),
+          actions: []),
       body: Center(
         child: Container(
             child: Column(

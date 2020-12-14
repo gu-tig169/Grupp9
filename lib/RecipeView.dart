@@ -17,6 +17,7 @@ class _RecipeViewState extends State<RecipeView> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.greenAccent[100],
+        centerTitle: true,
         title: Text(
           'Recipe List',
           style: TextStyle(
