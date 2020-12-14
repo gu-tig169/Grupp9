@@ -5,10 +5,13 @@ class FocusRecipeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text(
-          '*Det valda receptet*',
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
         ),
+        backgroundColor: Colors.greenAccent[100],
+        title:
+            Text('*Det valda receptet*', style: TextStyle(color: Colors.black)),
         actions: [
           Container(
             margin: EdgeInsets.all(15),
