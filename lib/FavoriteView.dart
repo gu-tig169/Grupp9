@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
-import 'package:projectapp/SearchView.dart';
 
 class FavoriteView extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -24,20 +23,6 @@ class FavoriteView extends StatelessWidget {
         ],
       ),
       body: FakeRecipeList(),
-      floatingActionButton: _search(context),
     );
-  }
-
-  Widget _search(BuildContext context) {
-    return FloatingActionButton(
-        backgroundColor: (Colors.green[300]),
-        child: Icon(Icons.search),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SearchView(),
-              ));
-        });
   }
 }
