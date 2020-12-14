@@ -1,28 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
+import 'package:projectapp/FavoriteView.dart';
+import 'package:projectapp/SearchView.dart';
 
-class RecipeView extends StatelessWidget {
+class RecipeView extends StatefulWidget {
+  @override
+  _RecipeViewState createState() => _RecipeViewState();
+}
+
+class _RecipeViewState extends State<RecipeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Colors.greenAccent[100],
         title: Text(
           'Recipe List',
-          style: TextStyle(color: Colors.white, fontSize: 24),
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontStyle: FontStyle.italic),
         ),
         actions: [
           Row(
             children: [
-              IconButton(icon: Icon(Icons.search), onPressed: () {}),
               DropdownButton(
                 icon: Icon(
                   Icons.menu,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 iconSize: 30,
                 items: [
-                  DropdownMenuItem(
-                      child: Text('Favorites'), value: 'Favorites'),
                   DropdownMenuItem(
                       child: Text('Filter Recipes'), value: 'Filter Recipes'),
                 ],
@@ -33,6 +42,23 @@ class RecipeView extends StatelessWidget {
         ],
       ),
       body: FakeRecipeList(),
+      floatingActionButton: _search(context),
     );
+  }
+
+  Widget _search(BuildContext context) {
+    return FloatingActionButton(
+        backgroundColor: (Colors.greenAccent[100]),
+        child: Icon(
+          Icons.search,
+          color: Colors.black,
+        ),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SearchView(),
+              ));
+        });
   }
 }
