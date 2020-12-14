@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
-import 'package:projectapp/FavoriteView.dart';
 import 'package:projectapp/SearchView.dart';
 
 class RecipeView extends StatefulWidget {

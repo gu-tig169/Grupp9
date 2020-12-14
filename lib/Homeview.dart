@@ -68,14 +68,17 @@ class Homeview extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   side: BorderSide(color: Colors.black),
                   borderRadius: BorderRadius.all(
-                    Radius.circular(10.0),
+                    Radius.circular(8.0),
                   )),
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => FavoriteView()));
               },
-              icon: Icon(Icons.star, color: Colors.yellow[700]),
-              label: Text('Favorites'),
+              icon: Icon(Icons.star, size: 40, color: Colors.yellow[700]),
+              label: Text(
+                'Favorites',
+                style: TextStyle(fontSize: 22),
+              ),
               color: Colors.blueGrey))
     ]);
   }
@@ -89,13 +92,16 @@ class Homeview extends StatelessWidget {
           child: RaisedButton.icon(
               shape: RoundedRectangleBorder(
                   side: BorderSide(color: Colors.black),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  borderRadius: BorderRadius.all(Radius.circular(8.0))),
               onPressed: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Fridge()));
               },
-              icon: Icon(Icons.shuffle, color: Colors.yellow[700]),
-              label: Text('Inspo'),
+              icon: Icon(Icons.shuffle, size: 40, color: Colors.yellow[700]),
+              label: Text(
+                'Inspiration',
+                style: TextStyle(fontSize: 22),
+              ),
               color: Colors.blueGrey))
     ]);
   }
@@ -103,22 +109,29 @@ class Homeview extends StatelessWidget {
   Widget _recipeViewButton(context) {
     return Column(children: [
       Container(
-          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          width: 400,
-          height: 220,
-          child: RaisedButton(
-              child: Text(
-                'Explore recipes',
-                style: TextStyle(fontSize: 20),
-              ),
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RecipeView()));
-              },
-              color: Colors.blueGrey))
+        width: 385,
+        height: 220,
+        child: FlatButton(
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Explore recipes',
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0))),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => RecipeView()));
+          },
+        ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            border: Border.all(color: Colors.black, width: 2),
+            image: DecorationImage(
+                image: AssetImage('assets/FoodPic.png'), fit: BoxFit.cover)),
+      )
     ]);
   }
 }

@@ -9,7 +9,7 @@ class FakeRecipeList extends StatelessWidget {
         ListTile(
             leading: Icon(
               Icons.star,
-              color: Colors.orange,
+              color: Colors.yellow[700],
             ),
             trailing: Text('35-45 min'),
             title: Text('Lasagne'),

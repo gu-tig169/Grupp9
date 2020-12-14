@@ -17,7 +17,7 @@ class FocusRecipeView extends StatelessWidget {
             margin: EdgeInsets.all(15),
             child: Icon(
               Icons.star,
-              color: Colors.orange,
+              color: Colors.yellow[700],
               size: 30,
             ),
           )
