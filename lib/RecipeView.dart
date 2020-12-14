@@ -12,28 +12,23 @@ class _RecipeViewState extends State<RecipeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[300],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Colors.greenAccent[100],
         title: Text(
           'Recipe List',
           style: TextStyle(
-              color: Colors.white, fontSize: 20, fontStyle: FontStyle.italic),
+              color: Colors.black, fontSize: 20, fontStyle: FontStyle.italic),
         ),
         actions: [
           Row(
             children: [
-              IconButton(
-                  icon: Icon(Icons.star),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FavoriteView(),
-                        ));
-                  }),
               DropdownButton(
                 icon: Icon(
                   Icons.menu,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 iconSize: 30,
                 items: [
@@ -53,8 +48,11 @@ class _RecipeViewState extends State<RecipeView> {
 
   Widget _search(BuildContext context) {
     return FloatingActionButton(
-        backgroundColor: (Colors.green[300]),
-        child: Icon(Icons.search),
+        backgroundColor: (Colors.greenAccent[100]),
+        child: Icon(
+          Icons.search,
+          color: Colors.black,
+        ),
         onPressed: () {
           Navigator.push(
               context,

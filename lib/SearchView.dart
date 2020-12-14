@@ -10,12 +10,16 @@ class _SearchViewState extends State<SearchView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[300],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Colors.greenAccent[100],
         centerTitle: true,
         title: Text(
           "Search for a recipe",
           style: TextStyle(
-              color: Colors.white, fontStyle: FontStyle.italic, fontSize: 20),
+              color: Colors.black, fontStyle: FontStyle.italic, fontSize: 20),
         ),
       ),
       body: SingleChildScrollView(
