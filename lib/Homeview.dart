@@ -23,8 +23,8 @@ class Homeview extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    _inspirationButton(),
-                    _favoriteButton(),
+                    _inspirationButton(context),
+                    _favoriteButton(context),
                   ],
                 ),
                 _recipeViewButton(context),
@@ -56,7 +56,7 @@ class Homeview extends StatelessWidget {
     );
   }
 
-  Widget _favoriteButton() {
+  Widget _favoriteButton(context) {
     return Row(children: [
       Container(
           padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -68,14 +68,17 @@ class Homeview extends StatelessWidget {
                   borderRadius: BorderRadius.all(
                     Radius.circular(10.0),
                   )),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RecipeView()));
+              },
               icon: Icon(Icons.star, color: Colors.yellow[700]),
               label: Text('Favorites'),
               color: Colors.blueGrey))
     ]);
   }
 
-  Widget _inspirationButton() {
+  Widget _inspirationButton(context) {
     return Row(children: [
       Container(
           padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -85,7 +88,10 @@ class Homeview extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   side: BorderSide(color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RecipeView()));
+              },
               icon: Icon(Icons.shuffle, color: Colors.yellow[700]),
               label: Text('Inspo'),
               color: Colors.blueGrey))
