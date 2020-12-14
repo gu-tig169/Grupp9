@@ -5,8 +5,7 @@ class FocusRecipeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green[300],
-        leading: Container(alignment: Alignment.center, child: Text('Back')),
+        backgroundColor: Colors.red,
         title: Text(
           '*Det valda receptet*',
         ),
@@ -32,7 +31,7 @@ class FocusRecipeView extends StatelessWidget {
           Text('Ingridenser, kanske vatten är bra att ha'),
           Text('Instruktioner - Gör så här blablabla'),
           IconButton(icon: Icon(Icons.thumb_up), onPressed: () {}),
-          IconButton(icon: Icon(Icons.thumb_down), onPressed: () {})
+          IconButton(icon: Icon(Icons.thumb_down), onPressed: () {}),
         ],
       ),
     );
@@ -40,7 +39,7 @@ class FocusRecipeView extends StatelessWidget {
 
   Widget _picture() {
     return Container(
-      height: 200,
+      height: 400,
       child: Stack(
         children: [
           Image(
