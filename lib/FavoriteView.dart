@@ -28,7 +28,7 @@ class FavoriteView extends StatelessWidget {
                 ],
                 onChanged: (value) {}),
           ]),
-      body: FakeRecipeList(),
+      body: FakeRecipeList(null),
     );
   }
 }

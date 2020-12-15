@@ -2,6 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:projectapp/Fridge.dart';
 import 'package:projectapp/RecipeView.dart';
 import 'package:projectapp/FavoriteView.dart';
+import 'package:provider/provider.dart';
+import 'model.dart';
+
+void main() {
+  var state = MyState();
+  runApp(ChangeNotifierProvider(create: (context) => state, child: MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: Homeview());
+  }
+}
 
 class Homeview extends StatelessWidget {
   @override
