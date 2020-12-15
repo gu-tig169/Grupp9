@@ -13,7 +13,7 @@ class Fridge extends StatelessWidget {
           title: Text("What's in the fridge?",
               style: TextStyle(
                   fontSize: 20,
-                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
                   color: Colors.black)),
           centerTitle: true,
           actions: []),

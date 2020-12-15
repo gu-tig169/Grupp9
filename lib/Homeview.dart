@@ -14,9 +14,9 @@ class Homeview extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _introTextOne(),
-                Container(height: 10),
+                Container(height: 5),
                 _introTextTwo(),
-                Container(height: 40),
+                Container(height: 25),
                 _introTextThree(),
                 Container(
                   height: 50,
@@ -37,7 +37,7 @@ class Homeview extends StatelessWidget {
   Widget _introTextOne() {
     return Text(
       'Welcome to',
-      style: TextStyle(fontSize: 18),
+      style: TextStyle(fontSize: 22),
     );
   }
 
@@ -45,16 +45,16 @@ class Homeview extends StatelessWidget {
     return Text(
       'Foodies',
       style: TextStyle(
-          fontSize: 35,
-          fontWeight: FontWeight.bold,
-          fontStyle: FontStyle.italic),
+        fontSize: 45,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 
   Widget _introTextThree() {
     return Text(
       'Search through hundreds of different recipes',
-      style: TextStyle(fontSize: 18),
+      style: TextStyle(fontSize: 20),
     );
   }
 
