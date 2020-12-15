@@ -14,7 +14,7 @@ class FavoriteView extends StatelessWidget {
           title: Text(
             'Favorite List',
             style: TextStyle(
-                color: Colors.black, fontSize: 20, fontStyle: FontStyle.italic),
+                color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           actions: [
             DropdownButton(

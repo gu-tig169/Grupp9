@@ -10,8 +10,11 @@ class FocusRecipeView extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.greenAccent[100],
-        title:
-            Text('*Det valda receptet*', style: TextStyle(color: Colors.black)),
+        title: Text('*Det valda receptet*',
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.bold)),
         actions: [
           Container(
             margin: EdgeInsets.all(15),

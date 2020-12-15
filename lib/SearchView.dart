@@ -19,7 +19,7 @@ class _SearchViewState extends State<SearchView> {
         title: Text(
           "Search for a recipe",
           style: TextStyle(
-              color: Colors.black, fontStyle: FontStyle.italic, fontSize: 20),
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
         ),
       ),
       body: SingleChildScrollView(
