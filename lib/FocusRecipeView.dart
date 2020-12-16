@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/Model.dart';
+import 'package:projectapp/model.dart';
 
 class FocusRecipeView extends StatelessWidget {
   final RecipeItem item;

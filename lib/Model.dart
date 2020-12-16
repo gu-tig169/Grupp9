@@ -27,13 +27,3 @@ class MyState extends ChangeNotifier {
 
   List<RecipeItem> get list => _list;
 }
-
-/*class MyState extends StatefulWidget {
-  List<Model> _list = FakeRecipeList();
-  List<Model> get list => _list;
-
-  void searchRecipe(Model recipe) async {
-    var index = _list.indexWhere((list) => list == recipe);
-    _list[index].id = id;
-  }
-}*/
