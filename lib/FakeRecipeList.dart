@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/FocusRecipeView.dart';
 import 'package:projectapp/model.dart';
 
 class FakeRecipeList extends StatefulWidget {
