@@ -22,7 +22,7 @@ class _RecipeViewState extends State<RecipeView> {
           title: Text(
             'Recipe List',
             style: TextStyle(
-                color: Colors.black, fontSize: 20, fontStyle: FontStyle.italic),
+                color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           actions: [
             Row(
