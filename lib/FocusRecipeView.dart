@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/Model.dart';
 
 class FocusRecipeView extends StatelessWidget {
+  final RecipeItem item;
+  FocusRecipeView(this.item);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
