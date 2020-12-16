@@ -20,11 +20,6 @@ class _FakeRecipeListState extends State<FakeRecipeList> {
 
   Widget _recipeItem(context, item) {
     return ListTile(
-      leading: IconButton(
-        icon: Icon(Icons.star),
-        color: Colors.grey,
-        onPressed: () {},
-      ),
       title: Text(item.title),
       trailing: Text(item.cooklength),
       onTap: () {},
