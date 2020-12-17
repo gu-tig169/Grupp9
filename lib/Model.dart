@@ -2,27 +2,29 @@ import 'package:flutter/material.dart';
 
 class RecipeItem {
   String title;
+  String ingredients;
   String cooklength;
-  bool star;
 
-  RecipeItem({this.title, this.cooklength, this.star});
+  RecipeItem({this.title, this.ingredients, this.cooklength});
 }
 
 class MyState extends ChangeNotifier {
   List<RecipeItem> _list = [
-    RecipeItem(title: 'Lasagne', cooklength: '2h', star: false),
-    RecipeItem(title: 'Tomtegröt', cooklength: '30m', star: false),
-    RecipeItem(title: 'Chili Con carne', cooklength: '1h', star: false),
-    RecipeItem(title: 'Pasta Alfredo', cooklength: '45m', star: false),
-    RecipeItem(title: 'Ugnspannkaka', cooklength: '50m', star: false),
-    RecipeItem(title: 'Franssyska i ugn', cooklength: '2h', star: false),
-    RecipeItem(title: 'Ärtsoppa', cooklength: '30m', star: false),
-    RecipeItem(title: 'Pytt i panna', cooklength: '10m', star: false),
-    RecipeItem(title: 'Chorizogryta', cooklength: '45m', star: false),
-    RecipeItem(title: 'Igelkottsgryta', cooklength: '1h', star: false),
-    RecipeItem(title: 'Rokot krompli', cooklength: '1,5h', star: false),
-    RecipeItem(title: 'Tikka massala', cooklength: '50m', star: false),
-    RecipeItem(title: 'Pasta Bolognese', cooklength: '30m', star: false),
+    RecipeItem(title: 'Lasagne', ingredients: 'test', cooklength: '2h'),
+    RecipeItem(title: 'Tomtegröt', ingredients: 'test', cooklength: '30m'),
+    RecipeItem(title: 'Chili Con carne', ingredients: 'test', cooklength: '1h'),
+    RecipeItem(title: 'Pasta Alfredo', ingredients: 'test', cooklength: '45m'),
+    RecipeItem(title: 'Ugnspannkaka', ingredients: 'test', cooklength: '50m'),
+    RecipeItem(
+        title: 'Franssyska i ugn', ingredients: 'test', cooklength: '2h'),
+    RecipeItem(title: 'Ärtsoppa', ingredients: 'test', cooklength: '30m'),
+    RecipeItem(title: 'Pytt i panna', ingredients: 'test', cooklength: '10m'),
+    RecipeItem(title: 'Chorizogryta', ingredients: 'test', cooklength: '45m'),
+    RecipeItem(title: 'Igelkottsgryta', ingredients: 'test', cooklength: '1h'),
+    RecipeItem(title: 'Rokot krompli', ingredients: 'test', cooklength: '1,5h'),
+    RecipeItem(title: 'Tikka massala', ingredients: 'test', cooklength: '50m'),
+    RecipeItem(
+        title: 'Pasta Bolognese', ingredients: 'test', cooklength: '30m'),
   ];
 
   List<RecipeItem> get list => _list;

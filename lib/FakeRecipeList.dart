@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/FocusRecipeView.dart';
 import 'package:projectapp/model.dart';
 
 class FakeRecipeList extends StatefulWidget {
@@ -21,7 +22,10 @@ class _FakeRecipeListState extends State<FakeRecipeList> {
     return ListTile(
       title: Text(item.title),
       trailing: Text(item.cooklength),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => FocusRecipeView(item)));
+      },
     );
   }
 }
