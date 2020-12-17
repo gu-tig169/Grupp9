@@ -28,7 +28,11 @@ class FocusRecipeView extends StatelessWidget {
                 fontSize: 20, color: Colors.black, fontStyle: FontStyle.italic),
           ),
           Text(
-            item.ingredients,
+            'Tid: ' + item.cooklength,
+            style: TextStyle(fontSize: 18),
+          ),
+          Text(
+            'Ingridienser: ' + item.ingredients,
             style: TextStyle(fontSize: 18),
           ),
         ],
