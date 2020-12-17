@@ -26,4 +26,12 @@ class MyState extends ChangeNotifier {
   ];
 
   List<RecipeItem> get list => _list;
+
+  String _sortBy = 'All';
+    String get sortBy => _sortBy;
+
+  void sortFilterBy(String sortBy) {
+    this._sortBy = sortBy;
+    notifyListeners();
+  } 
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/FakeRecipeList.dart';
-import 'package:projectapp/SearchView.dart';
-import 'package:projectapp/model.dart';
+import 'FakeRecipeList.dart';
+import 'Model.dart';
+import 'SearchView.dart';
 import 'package:provider/provider.dart';
 
 class RecipeView extends StatefulWidget {
@@ -35,9 +35,14 @@ class _RecipeViewState extends State<RecipeView> {
                   iconSize: 30,
                   items: [
                     DropdownMenuItem(
-                        child: Text('Filter Recipes'), value: 'Filter Recipes'),
+                        child: Text('All'), value: 'All',
+                    ),
+                    //DropdownMenuItem(child: Text('Alphabetical'), value: 'Alphabetical',),
+                
                   ],
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    Provider.of<MyState>(context, listen: false).sortFilterBy(value);
+                  },
                 ),
               ],
             ),
@@ -49,7 +54,11 @@ class _RecipeViewState extends State<RecipeView> {
 
   Widget _viewRecipeList() {
     return Consumer<MyState>(
-        builder: (context, state, child) => FakeRecipeList(state.list));
+        builder: (context, state, child) => FakeRecipeList(_sortList(state.list, state.sortBy)));
+  }
+
+  List<RecipeItem> _sortList(list, sortBy) {
+    return list;
   }
 
   Widget _search(BuildContext context) {
