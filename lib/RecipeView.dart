@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'FakeRecipeList.dart';
-import 'Model.dart';
+import 'model.dart';
 import 'SearchView.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +37,8 @@ class _RecipeViewState extends State<RecipeView> {
                     DropdownMenuItem(
                         child: Text('All'), value: 'All',
                     ),
-                    //DropdownMenuItem(child: Text('Alphabetical'), value: 'Alphabetical',),
+                    DropdownMenuItem(
+                      child: Text('A-Z'), value: 'A-Z',),
                 
                   ],
                   onChanged: (value) {
@@ -58,7 +59,18 @@ class _RecipeViewState extends State<RecipeView> {
   }
 
   List<RecipeItem> _sortList(list, sortBy) {
+    if(sortBy == 'All')
     return list;
+
+    if(sortBy == 'A-Z') return 
+    list.sort((a, b) {
+      return a.title.toString().compareTo(b.title.toString());
+  });
+
+    return null;
+
+
+    //List.sort((a, b) => a.toString().compareTo(b.toString()));
   }
 
   Widget _search(BuildContext context) {
