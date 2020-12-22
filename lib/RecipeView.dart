@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
-import 'package:projectapp/SearchView.dart';
 import 'package:projectapp/model.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +10,7 @@ class RecipeView extends StatefulWidget {
 
 class _RecipeViewState extends State<RecipeView> {
   Widget build(BuildContext context) {
+    TextEditingController _searchController = new TextEditingController();
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -43,28 +43,39 @@ class _RecipeViewState extends State<RecipeView> {
             ),
           ],
         ),
-        body: _viewRecipeList(),
-        floatingActionButton: _search(context));
+        body: Center(
+            child: Column(children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search dish...',
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  borderSide: BorderSide(color: Colors.black, width: 1.5),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                  borderSide: BorderSide(color: Colors.black, width: 1.5),
+                ),
+                prefixIcon: Icon(Icons.search),
+              ),
+            ),
+          ),
+          Text(
+            'Recipes',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: Divider(thickness: 2, color: Colors.grey[700])),
+          Expanded(child: _viewRecipeList())
+        ])));
   }
 
   Widget _viewRecipeList() {
     return Consumer<MyState>(
         builder: (context, state, child) => FakeRecipeList(state.list));
-  }
-
-  Widget _search(BuildContext context) {
-    return FloatingActionButton(
-        backgroundColor: (Colors.greenAccent[100]),
-        child: Icon(
-          Icons.search,
-          color: Colors.black,
-        ),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SearchView(),
-              ));
-        });
   }
 }
