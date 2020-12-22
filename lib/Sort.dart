@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/model.dart';
 
 import 'model.dart';
 
@@ -10,26 +11,19 @@ class Sort extends StatefulWidget {
 class _SortState extends State<Sort> {
   bool sort = false;
   List<RecipeItem> list = [
-    RecipeItem(title: 'Lasagne', cooklength: 45.0),
-    RecipeItem(title: 'Tomtegröt', cooklength: 30.0),
-    RecipeItem(title: 'Chili Con carne', cooklength: 60),
-    RecipeItem(title: 'Pasta Alfredo', cooklength: 45),
-    RecipeItem(title: 'Ugnspannkaka', cooklength: 50),
-    RecipeItem(title: 'Franssyska i ugn', cooklength: 120),
-    RecipeItem(title: 'Ärtsoppa', cooklength: 30),
-    RecipeItem(title: 'Pytt i panna', cooklength: 30),
-    RecipeItem(title: 'Chorizogryta', cooklength: 45),
-    RecipeItem(title: 'Igelkottsgryta', cooklength: 60),
-    RecipeItem(title: 'Rokot krompli', cooklength: 90),
-    RecipeItem(title: 'Tikka massala', cooklength: 40),
-    RecipeItem(title: 'Pasta Bolognese', cooklength: 25),
-    RecipeItem(title: 'Ärtsoppa', cooklength: 30),
-    RecipeItem(title: 'Pytt i panna', cooklength: 30),
-    RecipeItem(title: 'Chorizogryta', cooklength: 45),
-    RecipeItem(title: 'Igelkottsgryta', cooklength: 60),
-    RecipeItem(title: 'Rokot krompli', cooklength: 90),
-    RecipeItem(title: 'Tikka massala', cooklength: 40),
-    RecipeItem(title: 'Pasta Bolognese', cooklength: 25),
+    RecipeItem(title: 'Lasagne', ingredients: 'test', cooklength: 40),
+    RecipeItem(title: 'Tomtegröt', ingredients: 'test', cooklength: 30),
+    RecipeItem(title: 'Chili Con carne', ingredients: 'test', cooklength: 60),
+    RecipeItem(title: 'Pasta Alfredo', ingredients: 'test', cooklength: 45),
+    RecipeItem(title: 'Ugnspannkaka', ingredients: 'test', cooklength: 50),
+    RecipeItem(title: 'Franssyska i ugn', ingredients: 'test', cooklength: 120),
+    RecipeItem(title: 'Ärtsoppa', ingredients: 'test', cooklength: 30),
+    RecipeItem(title: 'Pytt i panna', ingredients: 'test', cooklength: 10),
+    RecipeItem(title: 'Chorizogryta', ingredients: 'test', cooklength: 45),
+    RecipeItem(title: 'Igelkottsgryta', ingredients: 'test', cooklength: 45),
+    RecipeItem(title: 'Rokot krompli', ingredients: 'test', cooklength: 50),
+    RecipeItem(title: 'Tikka massala', ingredients: 'test', cooklength: 60),
+    RecipeItem(title: 'Pasta Bolognese', ingredients: 'test', cooklength: 30),
   ];
 
   @override
