@@ -13,34 +13,28 @@ class FocusRecipeView extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.greenAccent[100],
-        title: Text('*Det valda receptet*',
+        title: Text('Receptet för ' + item.title,
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold)),
-        actions: [
-          Container(
-            margin: EdgeInsets.all(15),
-            child: Icon(
-              Icons.star,
-              color: Colors.yellow[700],
-              size: 30,
-            ),
-          )
-        ],
       ),
       body: Column(
         children: [
           _picture(),
           Text(
-            'En mystisk gryta',
+            item.title,
             style: TextStyle(
                 fontSize: 20, color: Colors.black, fontStyle: FontStyle.italic),
           ),
-          Text('Ingridenser, kanske vatten är bra att ha'),
-          Text('Instruktioner - Gör så här blablabla'),
-          IconButton(icon: Icon(Icons.thumb_up), onPressed: () {}),
-          IconButton(icon: Icon(Icons.thumb_down), onPressed: () {}),
+          Text(
+            'Tid: ' + item.cooklength,
+            style: TextStyle(fontSize: 18),
+          ),
+          Text(
+            'Ingridienser: ' + item.ingredients,
+            style: TextStyle(fontSize: 18),
+          ),
         ],
       ),
     );
