@@ -19,13 +19,14 @@ class _FakeRecipeListState extends State<FakeRecipeList> {
   }
 
   Widget _recipeItem(context, item) {
-    return ListTile(
+    return Card(
+        child: ListTile(
       title: Text(item.title),
       trailing: Text(item.cooklength),
       onTap: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => FocusRecipeView(item)));
       },
-    );
+    ));
   }
 }
