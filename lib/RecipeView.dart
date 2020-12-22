@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/Sort.dart';
-import 'SearchView.dart';
 
 class RecipeView extends StatefulWidget {
   @override
@@ -10,29 +9,40 @@ class RecipeView extends StatefulWidget {
 class _RecipeViewState extends State<RecipeView> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController _searchController = new TextEditingController();
     return Scaffold(
         appBar: AppBar(
           title: Text('Find a recipe'),
           backgroundColor: Colors.green[300],
         ),
-        body: SafeArea(
-          child: Sort(),
-        ));
-  }
-
-  Widget _search(BuildContext context) {
-    return FloatingActionButton(
-        backgroundColor: (Colors.greenAccent[100]),
-        child: Icon(
-          Icons.search,
-          color: Colors.black,
-        ),
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SearchView(),
-              ));
-        });
+        body: Center(
+            child: Column(children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Search dish...',
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  borderSide: BorderSide(color: Colors.black, width: 1.5),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                  borderSide: BorderSide(color: Colors.black, width: 1.5),
+                ),
+                prefixIcon: Icon(Icons.search),
+              ),
+            ),
+          ),
+          Text(
+            'Recipes',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: Divider(thickness: 2, color: Colors.grey[700])),
+          Expanded(child: Sort())
+        ])));
   }
 }
