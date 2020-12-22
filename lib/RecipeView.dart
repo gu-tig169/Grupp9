@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/FakeRecipeList.dart';
-import 'package:projectapp/model.dart';
-import 'package:provider/provider.dart';
+import 'package:projectapp/Sort.dart';
 
 class RecipeView extends StatefulWidget {
   @override
@@ -9,39 +7,13 @@ class RecipeView extends StatefulWidget {
 }
 
 class _RecipeViewState extends State<RecipeView> {
+  @override
   Widget build(BuildContext context) {
     TextEditingController _searchController = new TextEditingController();
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          backgroundColor: Colors.greenAccent[100],
-          centerTitle: true,
-          title: Text(
-            'Recipe List',
-            style: TextStyle(
-                color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          actions: [
-            Row(
-              children: [
-                DropdownButton(
-                  icon: Icon(
-                    Icons.menu,
-                    color: Colors.black,
-                  ),
-                  iconSize: 30,
-                  items: [
-                    DropdownMenuItem(
-                        child: Text('Filter Recipes'), value: 'Filter Recipes'),
-                  ],
-                  onChanged: (value) {},
-                ),
-              ],
-            ),
-          ],
+          title: Text('Find a recipe'),
+          backgroundColor: Colors.green[300],
         ),
         body: Center(
             child: Column(children: <Widget>[
@@ -70,12 +42,7 @@ class _RecipeViewState extends State<RecipeView> {
           Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Divider(thickness: 2, color: Colors.grey[700])),
-          Expanded(child: _viewRecipeList())
+          Expanded(child: Sort())
         ])));
-  }
-
-  Widget _viewRecipeList() {
-    return Consumer<MyState>(
-        builder: (context, state, child) => FakeRecipeList(state.list));
   }
 }
