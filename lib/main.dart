@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:projectapp/Fridge.dart';
 import 'package:projectapp/RecipeView.dart';
 import 'package:provider/provider.dart';
-import 'model.dart';
+import 'Model.dart';
 
 void main() {
   var state = MyState();
+  state.getList();
   runApp(ChangeNotifierProvider(create: (context) => state, child: MyApp()));
 }
 
@@ -14,8 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Cardo'), home: Homeview());
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: 'Cardo'),
+        home: Homeview());
   }
 }
 

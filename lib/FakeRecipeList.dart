@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FocusRecipeView.dart';
-import 'package:projectapp/model.dart';
+import 'package:projectapp/Model.dart';
 
 class FakeRecipeList extends StatefulWidget {
   final List<RecipeItem> list;
@@ -18,15 +18,27 @@ class _FakeRecipeListState extends State<FakeRecipeList> {
             widget.list.map((item) => _recipeItem(context, item)).toList());
   }
 
-  Widget _recipeItem(context, item) {
-    return Card(
+  /*Widget _recipeItem(context, item) {
+    *return SingleChildScrollView(
         child: ListTile(
       title: Text(item.title),
-      trailing: Text(item.cooklength),
+      trailing: Text(''),
       onTap: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => FocusRecipeView(item)));
       },
     ));
+  }
+}
+*/
+
+  Widget _recipeItem(context, item) {
+    return ListTile(
+        title: Text(item.title),
+        trailing: Text(''),
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => FocusRecipeView(item)));
+        });
   }
 }

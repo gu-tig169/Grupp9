@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/FakeRecipeList.dart';
 import 'package:projectapp/Sort.dart';
+import 'package:provider/provider.dart';
+
+import 'Model.dart';
 
 class RecipeView extends StatefulWidget {
   @override
@@ -42,7 +46,15 @@ class _RecipeViewState extends State<RecipeView> {
           Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Divider(thickness: 2, color: Colors.grey[700])),
-          Expanded(child: Sort())
+          Expanded(
+              child: Consumer<MyState>(
+                  builder: (context, state, child) =>
+                      FakeRecipeList(state.list)))
         ])));
   }
+
+  // Widget _viewList() {
+  // return Consumer<MyState>(
+  //   builder: (context, state, child) => FakeRecipeList(state.list));
+  //}
 }

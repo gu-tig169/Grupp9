@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/model.dart';
+import 'package:projectapp/Model.dart';
 
 class FocusRecipeView extends StatelessWidget {
   final RecipeItem item;
@@ -32,7 +32,7 @@ class FocusRecipeView extends StatelessWidget {
             style: TextStyle(fontSize: 18),
           ),
           Text(
-            'Ingridienser: ' + item.ingredients,
+            'Ingridienser: ',
             style: TextStyle(fontSize: 18),
           ),
         ],
