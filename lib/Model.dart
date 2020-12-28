@@ -2,28 +2,30 @@ import 'package:flutter/material.dart';
 import 'FetchAPI.dart';
 
 class RecipeItem {
-  String title;
   int id;
+  String title;
   String image;
-  String imageType;
+ 
+  
 
-  RecipeItem({this.title, this.id, this.image, this.imageType});
+  RecipeItem({this.id, this.title, this.image,});
 
   static Map<String, dynamic> toJson(RecipeItem item) {
     return {
-      'title': item.title,
       'id': item.id,
+      'title': item.title,
       'image': item.image,
-      'imageType': item.imageType
+      
     };
   }
 
-  static RecipeItem fromJson(Map<String, dynamic> jsonData) {
+  static RecipeItem fromJson(Map<String, dynamic> json) {
     return RecipeItem(
-        title: jsonData['title'],
-        id: jsonData['id'],
-        image: jsonData['image'],
-        imageType: jsonData['imageType']);
+      id: json['id'],
+      title: json['title'],
+      image: json['image'],
+     
+    );
   }
 }
 

@@ -46,15 +46,12 @@ class _RecipeViewState extends State<RecipeView> {
           Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Divider(thickness: 2, color: Colors.grey[700])),
-          Expanded(
-              child: Consumer<MyState>(
-                  builder: (context, state, child) =>
-                      FakeRecipeList(state.list)))
+          Expanded(child: _viewList())
         ])));
   }
 
-  // Widget _viewList() {
-  // return Consumer<MyState>(
-  //   builder: (context, state, child) => FakeRecipeList(state.list));
-  //}
+  Widget _viewList() {
+    return Consumer<MyState>(
+        builder: (context, state, child) => FakeRecipeList(state.list));
+  }
 }

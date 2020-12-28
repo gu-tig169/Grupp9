@@ -13,7 +13,7 @@ class FocusRecipeView extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         backgroundColor: Colors.greenAccent[100],
-        title: Text('Receptet för ' + item.title,
+        title: Text(item.title,
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
@@ -21,18 +21,18 @@ class FocusRecipeView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          _picture(),
+          _picture(context),
           Text(
             item.title,
             style: TextStyle(
                 fontSize: 20, color: Colors.black, fontStyle: FontStyle.italic),
           ),
           Text(
-            'Tid: ' + '{item.cooklength}',
+            'Time: ' + '{item.cooklength}',
             style: TextStyle(fontSize: 18),
           ),
           Text(
-            'Ingridienser: ',
+            'Ingredients: ',
             style: TextStyle(fontSize: 18),
           ),
         ],
@@ -40,15 +40,14 @@ class FocusRecipeView extends StatelessWidget {
     );
   }
 
-  Widget _picture() {
+  Widget _picture(context) {
     return Container(
-      height: 400,
-      child: Stack(
-        children: [
-          Image(
-              image: NetworkImage(
-                  'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700%2C636'))
-        ],
+      height: 350,
+      width: 425,
+      padding: EdgeInsets.only(bottom: 50),
+      child: Image(
+        image: NetworkImage(item.image),
+        fit: BoxFit.cover,
       ),
     );
   }
