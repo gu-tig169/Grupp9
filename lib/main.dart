@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:projectapp/Fridge.dart';
 import 'package:projectapp/RecipeView.dart';
 import 'package:provider/provider.dart';
+import 'Joke.dart';
 import 'Model.dart';
 
 void main() {
   var state = MyState();
   state.getList();
+  state.fetchJoke();
   runApp(ChangeNotifierProvider(create: (context) => state, child: MyApp()));
 }
 
@@ -22,6 +24,9 @@ class MyApp extends StatelessWidget {
 }
 
 class Homeview extends StatelessWidget {
+  final Joke joke;
+  Homeview({this.joke});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +52,7 @@ class Homeview extends StatelessWidget {
                     Container(
                       width: 14,
                     ),
-                    _favoriteButton(context),
+                    _jokeButton(context),
                   ],
                 ),
                 Container(height: 10),
@@ -136,10 +141,12 @@ class Homeview extends StatelessWidget {
     ]);
   }
 
-  Widget _favoriteButton(context) {
+  Widget _jokeButton(context) {
     return Row(children: [
       BouncingWidget(
-          onPressed: () {},
+          onPressed: () {
+            createJokePopup(context);
+          },
           child: Container(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
               width: 185,
@@ -219,5 +226,16 @@ class Homeview extends StatelessWidget {
                         ))
                   ]))))
     ]);
+  }
+
+  createJokePopup(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Nothing works just ignore this'),
+            actions: [IconButton(icon: Icon(Icons.cancel), onPressed: () {})],
+          );
+        });
   }
 }

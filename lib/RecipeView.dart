@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
-import 'package:projectapp/Sort.dart';
 import 'package:provider/provider.dart';
 
 import 'Model.dart';
