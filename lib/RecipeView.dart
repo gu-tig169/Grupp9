@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
-import 'package:projectapp/Sort.dart';
 import 'package:provider/provider.dart';
 
 import 'Model.dart';
@@ -39,10 +38,20 @@ class _RecipeViewState extends State<RecipeView> {
               ),
             ),
           ),
-          Text(
-            'Recipes',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+          Row(children: [
+            Padding(padding: EdgeInsets.only(left: 25)),
+            Text(
+              'Recipes',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              width: 250,
+            ),
+            Text(
+              'Ready in',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ]),
           Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Divider(thickness: 2, color: Colors.grey[700])),

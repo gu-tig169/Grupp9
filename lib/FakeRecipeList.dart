@@ -31,7 +31,7 @@ Widget _recipeItem(context, RecipeItem item) {
   return Card(
       child: ListTile(
           title: Text(item.title),
-          trailing: Text(''),
+          trailing: Text(item.readyInMinutes.toString() + ' minutes'),
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => FocusRecipeView(item)));

@@ -28,7 +28,7 @@ class FocusRecipeView extends StatelessWidget {
                 fontSize: 20, color: Colors.black, fontStyle: FontStyle.italic),
           ),
           Text(
-            'Time: ' + '{item.cooklength}',
+            'Ready in: ' + item.readyInMinutes.toString() + ' minutes',
             style: TextStyle(fontSize: 18),
           ),
           Text(
@@ -46,7 +46,8 @@ class FocusRecipeView extends StatelessWidget {
       width: 425,
       padding: EdgeInsets.only(bottom: 50),
       child: Image(
-        image: NetworkImage(item.image),
+        image:
+            NetworkImage('https://spoonacular.com/recipeImages/' + item.image),
         fit: BoxFit.cover,
       ),
     );
