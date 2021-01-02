@@ -1,28 +1,21 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'Joke.dart';
+
 import 'Model.dart';
 
-const APIURL = 'https://api.spoonacular.com/recipes/complexSearch';
-const APIKEY = 'eb25dad6924649f2a4584b42cba83155';
+const APIURL =
+    'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/';
 
 class FetchAPI {
-  static Future<List<RecipeItem>> getRecipeList() async {
-    var response = await http.get('$APIURL?apiKey=$APIKEY&number=10');
+  static Future<List<RecipeItem>> getRecipeSearch(String query) async {
+    var response = await http.get('$APIURL' + 'search?query=' + '$query',
+        headers: {
+          'X-RapidAPI-Key': "60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705"
+        });
     var json = jsonDecode(response.body);
-    print(json);
+    print(response.body);
     return json['results'].map<RecipeItem>((data) {
       return RecipeItem.fromJson(data);
-    }).toList();
-  }
-
-  static Future<List<Joke>> getJokeList() async {
-    var response = await http.get(
-        'https://api.spoonacular.com/food/jokes/random?apiKey=eb25dad6924649f2a4584b42cba83155');
-    var json = jsonDecode(response.body);
-    print(json);
-    return json['text'].map<Joke>((data) {
-      return Joke.fromJson(data);
     }).toList();
   }
 }

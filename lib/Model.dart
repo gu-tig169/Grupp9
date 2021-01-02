@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-import 'FetchAPI.dart';
-import 'Joke.dart';
-
 class RecipeItem {
+  //TODO lägg till servings
+  //TODO lägg till en till model med ingridiesner
   int id;
   String title;
   String image;
+  int readyInMinutes;
 
   RecipeItem({
     this.id,
     this.title,
     this.image,
+    this.readyInMinutes,
   });
 
   static Map<String, dynamic> toJson(RecipeItem item) {
@@ -18,6 +18,7 @@ class RecipeItem {
       'id': item.id,
       'title': item.title,
       'image': item.image,
+      'readyInMinutes': item.readyInMinutes,
     };
   }
 
@@ -26,26 +27,7 @@ class RecipeItem {
       id: json['id'],
       title: json['title'],
       image: json['image'],
+      readyInMinutes: json['readyInMinutes'],
     );
-  }
-}
-
-class MyState extends ChangeNotifier {
-  List<RecipeItem> _list = [];
-  List<Joke> _jokelist = [];
-
-  List<RecipeItem> get list => _list;
-  List<Joke> get jokelist => _jokelist;
-
-  Future getList() async {
-    List<RecipeItem> list = await FetchAPI.getRecipeList();
-    _list = list;
-    notifyListeners();
-  }
-
-  Future fetchJoke() async {
-    List<Joke> jokelist = await FetchAPI.getJokeList();
-    _jokelist = jokelist;
-    notifyListeners();
   }
 }

@@ -1,16 +1,13 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:projectapp/Fridge.dart';
-import 'package:projectapp/RecipeView.dart';
-import 'package:provider/provider.dart';
-import 'Joke.dart';
-import 'Model.dart';
+
+import 'Search.dart';
 
 void main() {
-  var state = MyState();
-  state.getList();
-  state.fetchJoke();
-  runApp(ChangeNotifierProvider(create: (context) => state, child: MyApp()));
+  // state.getList();
+  //state.fetchJoke();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,9 +21,6 @@ class MyApp extends StatelessWidget {
 }
 
 class Homeview extends StatelessWidget {
-  final Joke joke;
-  Homeview({this.joke});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,7 +184,7 @@ class Homeview extends StatelessWidget {
       BouncingWidget(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => RecipeView()));
+                context, MaterialPageRoute(builder: (context) => Search()));
           },
           child: Container(
               width: 385,

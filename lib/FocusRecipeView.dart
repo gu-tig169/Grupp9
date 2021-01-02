@@ -23,15 +23,17 @@ class FocusRecipeView extends StatelessWidget {
         children: [
           _picture(context),
           Text(
+            //TODO Fixa så texten får plats, eller iaf får .../ eller börjar på ny rad.
             item.title,
             style: TextStyle(
                 fontSize: 20, color: Colors.black, fontStyle: FontStyle.italic),
           ),
           Text(
-            'Time: ' + '{item.cooklength}',
+            'Time: ' + item.readyInMinutes.toString() + ' Minutes',
             style: TextStyle(fontSize: 18),
           ),
           Text(
+            //TODO: ingredienser. fixa i model
             'Ingredients: ',
             style: TextStyle(fontSize: 18),
           ),
@@ -46,7 +48,8 @@ class FocusRecipeView extends StatelessWidget {
       width: 425,
       padding: EdgeInsets.only(bottom: 50),
       child: Image(
-        image: NetworkImage(item.image),
+        image:
+            NetworkImage('https://spoonacular.com/recipeImages/' + item.image),
         fit: BoxFit.cover,
       ),
     );

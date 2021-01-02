@@ -1,10 +1,11 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:projectapp/FakeRecipeList.dart';
+import 'package:projectapp/FetchAPI.dart';
 import 'package:provider/provider.dart';
 
 import 'Model.dart';
-
-class RecipeView extends StatefulWidget {
+*/
+/*class RecipeView extends StatefulWidget {
   @override
   _RecipeViewState createState() => _RecipeViewState();
 }
@@ -12,7 +13,7 @@ class RecipeView extends StatefulWidget {
 class _RecipeViewState extends State<RecipeView> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController _searchController = new TextEditingController();
+    // TextEditingController _searchController = new TextEditingController();
     return Scaffold(
         appBar: AppBar(
           title: Text('Find a recipe'),
@@ -23,7 +24,7 @@ class _RecipeViewState extends State<RecipeView> {
           Padding(
             padding: EdgeInsets.all(10.0),
             child: TextField(
-              controller: _searchController,
+              //  controller: _searchController,
               decoration: InputDecoration(
                 hintText: 'Search dish...',
                 enabledBorder: OutlineInputBorder(
@@ -45,7 +46,9 @@ class _RecipeViewState extends State<RecipeView> {
           Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Divider(thickness: 2, color: Colors.grey[700])),
-          Expanded(child: _viewList())
+          Expanded(
+            child: _viewList(),
+          ),
         ])));
   }
 
@@ -53,4 +56,4 @@ class _RecipeViewState extends State<RecipeView> {
     return Consumer<MyState>(
         builder: (context, state, child) => FakeRecipeList(state.list));
   }
-}
+}*/
