@@ -29,8 +29,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   provider: any
+  http: any
   bouncing_widget: ^1.2.0
-  
+  screen_loader: ^2.0.1
+  focused_menu: ^1.0.2
 
 dev_dependencies:
   flutter_test:
