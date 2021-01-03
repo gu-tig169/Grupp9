@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'FetchAPI.dart';
-import 'FocusRecipeView.dart';
+import 'FocusIngredients.dart';
 import 'Model.dart';
 
 class Fridge extends StatefulWidget {
@@ -144,7 +144,7 @@ class _FridgeState extends State<Fridge> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FocusRecipeView(recipes[index]),
+                    builder: (context) => FocusIngredients(recipes[index]),
                   ));
             },
           );
