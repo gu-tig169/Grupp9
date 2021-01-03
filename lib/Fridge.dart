@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Sort.dart';
 
 class Fridge extends StatefulWidget {
   @override
@@ -58,7 +57,7 @@ class _FridgeState extends State<Fridge> {
           Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Divider(thickness: 2, color: Colors.grey[700])),
-          Expanded(child: Sort())
+          //Expanded(child: Sort())
         ])));
   }
 }
