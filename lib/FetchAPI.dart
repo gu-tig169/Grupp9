@@ -18,4 +18,18 @@ class FetchAPI {
       return RecipeItem.fromJson(data);
     }).toList();
   }
+
+  static Future<List<RecipeItem>> getIngredientsSearch(
+      String ingredients) async {
+    var response = await http.get(
+        '$APIURL' + 'findByIngredients?ingredients=' + '$ingredients',
+        headers: {
+          'X-RapidAPI-Key': "60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705"
+        });
+    var json = jsonDecode(response.body);
+    print(response.body);
+    return json.map<RecipeItem>((data) {
+      return RecipeItem.fromJson(data);
+    }).toList();
+  }
 }
