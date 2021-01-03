@@ -22,21 +22,7 @@ class FocusRecipeView extends StatelessWidget {
       body: Column(
         children: [
           _picture(context),
-          Text(
-            //TODO Fixa så texten får plats, eller iaf får .../ eller börjar på ny rad.
-            item.title,
-            style: TextStyle(
-                fontSize: 20, color: Colors.black, fontStyle: FontStyle.italic),
-          ),
-          Text(
-            'Time: ' + item.readyInMinutes.toString() + ' Minutes',
-            style: TextStyle(fontSize: 18),
-          ),
-          Text(
-            //TODO: ingredienser. fixa i model
-            'Ingredients: ',
-            style: TextStyle(fontSize: 18),
-          ),
+          _instructions(),
         ],
       ),
     );
@@ -53,5 +39,37 @@ class FocusRecipeView extends StatelessWidget {
         fit: BoxFit.cover,
       ),
     );
+  }
+
+  Widget _instructions() {
+    return Stack(alignment: Alignment.center, children: [
+      Container(
+        height: 250,
+        child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: 350,
+            ),
+            child: Text(
+              item.title,
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontStyle: FontStyle.italic),
+            )),
+      ),
+      Container(
+        alignment: Alignment.topCenter,
+        height: 100,
+        child: Text(
+          'Time: ' + item.readyInMinutes.toString() + ' Minutes',
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
+      Container(
+        alignment: Alignment.bottomCenter,
+        height: 100,
+        child: Text('Ingredients: FISK FÖRFAN!'),
+      ),
+    ]);
   }
 }
