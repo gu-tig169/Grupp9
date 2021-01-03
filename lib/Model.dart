@@ -1,31 +1,33 @@
-import 'package:flutter/material.dart';
-
 class RecipeItem {
+  //TODO lägg till servings
+  //TODO lägg till en till model med ingridiesner
+  int id;
   String title;
-  String ingredients;
-  double cooklength;
+  String image;
+  int readyInMinutes;
 
-  List<RecipeItem> list;
+  RecipeItem({
+    this.id,
+    this.title,
+    this.image,
+    this.readyInMinutes,
+  });
 
-  RecipeItem({this.title, this.ingredients, this.cooklength});
-}
+  static Map<String, dynamic> toJson(RecipeItem item) {
+    return {
+      'id': item.id,
+      'title': item.title,
+      'image': item.image,
+      'readyInMinutes': item.readyInMinutes,
+    };
+  }
 
-class MyState extends ChangeNotifier {
-  List<RecipeItem> _list = [
-    RecipeItem(title: 'Lasagne', ingredients: 'test', cooklength: 40),
-    RecipeItem(title: 'Tomtegröt', ingredients: 'test', cooklength: 30),
-    RecipeItem(title: 'Chili Con carne', ingredients: 'test', cooklength: 60),
-    RecipeItem(title: 'Pasta Alfredo', ingredients: 'test', cooklength: 45),
-    RecipeItem(title: 'Ugnspannkaka', ingredients: 'test', cooklength: 50),
-    RecipeItem(title: 'Franssyska i ugn', ingredients: 'test', cooklength: 120),
-    RecipeItem(title: 'Ärtsoppa', ingredients: 'test', cooklength: 30),
-    RecipeItem(title: 'Pytt i panna', ingredients: 'test', cooklength: 10),
-    RecipeItem(title: 'Chorizogryta', ingredients: 'test', cooklength: 45),
-    RecipeItem(title: 'Igelkottsgryta', ingredients: 'test', cooklength: 45),
-    RecipeItem(title: 'Rokot krompli', ingredients: 'test', cooklength: 50),
-    RecipeItem(title: 'Tikka massala', ingredients: 'test', cooklength: 60),
-    RecipeItem(title: 'Pasta Bolognese', ingredients: 'test', cooklength: 30),
-  ];
-
-  List<RecipeItem> get list => _list;
+  static RecipeItem fromJson(Map<String, dynamic> json) {
+    return RecipeItem(
+      id: json['id'],
+      title: json['title'],
+      image: json['image'],
+      readyInMinutes: json['readyInMinutes'],
+    );
+  }
 }
