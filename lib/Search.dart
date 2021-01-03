@@ -34,6 +34,9 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+              onPressed: () => Navigator.of(context).pop()),
           title: Text("Find a recipe",
               style: TextStyle(
                   fontSize: 20,
@@ -144,10 +147,9 @@ class _SearchState extends State<Search> {
                                       child: Text(
                                         recipes[index].title,
                                         style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: Colors.white,
-                                        ),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Colors.black),
                                       ),
                                     )),
                               ),
