@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:projectapp/FetchAPI.dart';
+import 'package:projectapp/FocusRecipeView.dart';
+import 'Model.dart';
 
 class Fridge extends StatefulWidget {
+  final List<RecipeItem> list;
+  Fridge({this.list});
+
   @override
   _FridgeState createState() => _FridgeState();
 }
 
 class _FridgeState extends State<Fridge> {
-  @override
+  var recipes;
+  /*Future _getRecipes(String ingredients) async {
+    var recipe = await FetchAPI.getRecipeSearch(ingredients);
+    setState(() {
+      recipes = recipe;
+    });
+  }
+
+  initState() {
+    super.initState();
+    _getRecipes("");
+  }
+  */
+
   Widget build(BuildContext context) {
     TextEditingController _searchController = new TextEditingController();
     return Scaffold(
@@ -57,7 +76,78 @@ class _FridgeState extends State<Fridge> {
           Padding(
               padding: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Divider(thickness: 2, color: Colors.grey[700])),
-          //Expanded(child: Sort())
+          //Expanded(child: _ShowScreen())
         ])));
   }
+  /*Widget _showScreen() {
+    try {
+      if (recipes == null) {
+        return Center(child: CircularProgressIndicator());
+      }
+    } catch (e) {
+      print(e);
+      throw e;
+    }
+    return _recipeCard();
+  }*/
+
+  /*Widget _recipeCard() {
+    return ListView.builder(
+        itemCount: recipes.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                        height: 400,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  ('https://spoonacular.com/recipeImages/' +
+                                      recipes[index].image)),
+                            ))),
+                    Positioned(
+                        bottom: 0,
+                        height: 100,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(20),
+                                bottomRight: Radius.circular(20)),
+                            child: BackdropFilter(
+                              filter:
+                                  ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                              child: Padding(
+                                padding: EdgeInsets.all(10),
+                                child: Container(
+                                    height: 90,
+                                    width: 375,
+                                    color: Colors.black.withOpacity(0),
+                                    child: Center(
+                                      child: Text(
+                                        recipes[index].title,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Colors.black),
+                                      ),
+                                    )),
+                              ),
+                            )))
+                  ],
+                )),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FocusRecipeView(recipes[index]),
+                  ));
+            },
+          );
+        });
+  } */
 }
