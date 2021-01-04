@@ -1,14 +1,13 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:projectapp/Fridge.dart';
-import 'package:projectapp/RecipeView.dart';
-import 'package:provider/provider.dart';
-import 'Model.dart';
+
+import 'Search.dart';
 
 void main() {
-  var state = MyState();
-  state.getList();
-  runApp(ChangeNotifierProvider(create: (context) => state, child: MyApp()));
+  // state.getList();
+  //state.fetchJoke();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -47,7 +46,7 @@ class Homeview extends StatelessWidget {
                     Container(
                       width: 14,
                     ),
-                    _favoriteButton(context),
+                    _jokeButton(context),
                   ],
                 ),
                 Container(height: 10),
@@ -136,10 +135,12 @@ class Homeview extends StatelessWidget {
     ]);
   }
 
-  Widget _favoriteButton(context) {
+  Widget _jokeButton(context) {
     return Row(children: [
       BouncingWidget(
-          onPressed: () {},
+          onPressed: () {
+            createJokePopup(context);
+          },
           child: Container(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
               width: 185,
@@ -183,7 +184,7 @@ class Homeview extends StatelessWidget {
       BouncingWidget(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => RecipeView()));
+                context, MaterialPageRoute(builder: (context) => Search()));
           },
           child: Container(
               width: 385,
@@ -219,5 +220,16 @@ class Homeview extends StatelessWidget {
                         ))
                   ]))))
     ]);
+  }
+
+  createJokePopup(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Nothing works just ignore this'),
+            actions: [IconButton(icon: Icon(Icons.cancel), onPressed: () {})],
+          );
+        });
   }
 }
