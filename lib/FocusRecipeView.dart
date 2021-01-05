@@ -4,10 +4,11 @@ import 'package:projectapp/models/RecipeItemModel.dart';
 
 import 'FetchAPI.dart';
 import 'Search.dart';
+import 'loading/Loading.dart';
 
 class FocusRecipeView extends StatefulWidget {
   final RecipeItem item;
-  FocusRecipeView({this.item});
+  FocusRecipeView(this.item);
 
   @override
   _FocusRecipeViewState createState() => _FocusRecipeViewState();
@@ -15,12 +16,16 @@ class FocusRecipeView extends StatefulWidget {
 
 class _FocusRecipeViewState extends State<FocusRecipeView> {
   var itemInfo;
+  //bool error = true;
 
   void _getRecipeInformation(RecipeItem item) async {
-    var information = await FetchAPI.getRecipeId(item);
-    setState(() {
-      itemInfo = information;
-    });
+    try {
+      var information = await FetchAPI.getRecipeId(item);
+      setState(() {
+        //   error = false;
+        itemInfo = information;
+      });
+    } catch (e) {}
   }
 
   initState() {
@@ -29,7 +34,10 @@ class _FocusRecipeViewState extends State<FocusRecipeView> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
+    if (itemInfo == null) {
+      return Loading();
+    } else {
+      return Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -44,24 +52,28 @@ class _FocusRecipeViewState extends State<FocusRecipeView> {
                   fontWeight: FontWeight.bold)),
         ),
         body: Center(
-          child: Column(children: [
-            _picture(context),
-            Text(
-              'Ingredients',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            Expanded(
-              child: _ingredientList(),
-            ),
-            Text(
-              'Instructions',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            Expanded(
-              child: _instructionList(),
-            )
-          ]),
-        ));
+          child: Column(
+            children: [
+              _picture(context),
+              Text(
+                'Ingredients',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              Expanded(
+                child: _ingredientList(),
+              ),
+              Text(
+                'Instructions',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              Expanded(
+                child: _instructionList(),
+              )
+            ],
+          ),
+        ),
+      );
+    }
   }
 
   Widget _picture(context) {
