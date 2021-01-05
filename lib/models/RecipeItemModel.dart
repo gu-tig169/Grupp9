@@ -1,16 +1,16 @@
 class RecipeItem {
-  //TODO lägg till servings
-  //TODO lägg till en till model med ingridiesner
   int id;
   String title;
   String image;
   int readyInMinutes;
+  int servings;
 
   RecipeItem({
     this.id,
     this.title,
     this.image,
     this.readyInMinutes,
+    this.servings,
   });
 
   static Map<String, dynamic> toJson(RecipeItem item) {
@@ -19,6 +19,7 @@ class RecipeItem {
       'title': item.title,
       'image': item.image,
       'readyInMinutes': item.readyInMinutes,
+      'servings': item.servings
     };
   }
 
@@ -28,6 +29,7 @@ class RecipeItem {
       title: json['title'],
       image: json['image'],
       readyInMinutes: json['readyInMinutes'],
+      servings: json['servings'],
     );
   }
 }
