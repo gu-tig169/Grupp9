@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:projectapp/FetchAPI.dart';
 import 'package:projectapp/FocusRecipeView.dart';
+import 'loading/Loading.dart';
 import 'models/RecipeItemModel.dart';
 
 //sätta i klassen
@@ -32,49 +33,41 @@ class _SearchState extends State<Search> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-              onPressed: () => Navigator.of(context).pop()),
-          title: Text("Find a recipe",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black)),
-          centerTitle: true,
-          backgroundColor: Colors.greenAccent[100],
-        ),
-        body: Center(
-            child: Column(children: [
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: _textField(),
+    if (items == null) {
+      return Loading();
+    } else {
+      return Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                onPressed: () => Navigator.of(context).pop()),
+            title: Text("Find a recipe",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black)),
+            centerTitle: true,
+            backgroundColor: Colors.greenAccent[100],
           ),
-          Padding(padding: EdgeInsets.only(left: 25)),
-          Text(
-            'Recipes',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          Padding(
-              padding: EdgeInsets.only(left: 10.0, right: 10.0),
-              child: Divider(thickness: 2, color: Colors.grey[700])),
-          Expanded(
-            child: _showScreen(),
-          )
-        ])));
-  }
-
-  Widget _showScreen() {
-    try {
-      if (items == null) {
-        return Center(child: CircularProgressIndicator());
-      }
-    } catch (e) {
-      print(e);
-      throw e;
+          body: Center(
+              child: Column(children: [
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: _textField(),
+            ),
+            Padding(padding: EdgeInsets.only(left: 25)),
+            Text(
+              'Recipes',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ),
+            Padding(
+                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                child: Divider(thickness: 2, color: Colors.grey[700])),
+            Expanded(
+              child: _recipeCard(),
+            )
+          ])));
     }
-    return _recipeCard();
   }
 
   Widget _textField() {
@@ -134,6 +127,7 @@ class _SearchState extends State<Search> {
                             child: Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Container(
+<<<<<<< HEAD
                                   height: 100,
                                   width: 375,
                                   alignment: Alignment.bottomLeft,
@@ -148,13 +142,36 @@ class _SearchState extends State<Search> {
                                 )),
                           ),
                         ))
+=======
+                                    height: 100,
+                                    width: 375,
+                                    color: Colors.black.withOpacity(0),
+                                    child: Center(
+                                      child: Text(
+                                        items[index].title +
+                                            '\nTime to make: ' +
+                                            items[index]
+                                                .readyInMinutes
+                                                .toString() +
+                                            ' minutes' +
+                                            '\nServings: ' +
+                                            items[index].servings.toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            color: Colors.black),
+                                      ),
+                                    )),
+                              ),
+                            )))
+>>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480
                   ],
                 )),
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FocusRecipeView(item: items[index]),
+                    builder: (context) => FocusRecipeView(items[index]),
                   ));
             },
           );
