@@ -1,9 +1,10 @@
 import 'dart:ui';
-import 'package:flutter/material.dart';
-import 'package:projectapp/models/RecipeItemModel.dart';
 
-import 'FetchAPI.dart';
-import 'Search.dart';
+import 'package:flutter/material.dart';
+
+import 'package:projectapp/models/recipe_item_model.dart';
+import 'package:projectapp/service/fetch_api.dart';
+import 'package:projectapp/views/recipe_view.dart';
 
 class FocusRecipeView extends StatefulWidget {
   final RecipeItem item;

@@ -1,9 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:projectapp/FetchAPI.dart';
-import 'package:projectapp/FocusRecipeView.dart';
-import 'models/RecipeItemModel.dart';
+
+import 'package:projectapp/models/recipe_item_model.dart';
+import 'package:projectapp/service/fetch_api.dart';
+import 'package:projectapp/views/focus_recipe_view.dart';
 
 //sätta i klassen
 TextEditingController textEditingController = TextEditingController();
@@ -140,7 +141,14 @@ class _SearchState extends State<Search> {
                                     color: Colors.black.withOpacity(0),
                                     child: Center(
                                       child: Text(
-                                        items[index].title + '\nTime to make: ' + items[index].readyInMinutes.toString() + ' minutes' + '\nServings: ' + items[index].servings.toString(),
+                                        items[index].title +
+                                            '\nTime to make: ' +
+                                            items[index]
+                                                .readyInMinutes
+                                                .toString() +
+                                            ' minutes' +
+                                            '\nServings: ' +
+                                            items[index].servings.toString(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20,

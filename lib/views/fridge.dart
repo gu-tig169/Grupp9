@@ -1,8 +1,10 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'FetchAPI.dart';
-import 'FocusIngredients.dart';
-import 'package:projectapp/models/RecipeItemModel.dart';
+
+import 'package:projectapp/models/recipe_item_model.dart';
+import 'package:projectapp/service/fetch_api.dart';
+import 'package:projectapp/views/focus_ingredient.dart';
 
 class Fridge extends StatefulWidget {
   final List<RecipeItem> list;
