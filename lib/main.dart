@@ -2,11 +2,10 @@ import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:projectapp/Fridge.dart';
 
+import 'JokesAndTriviaView.dart';
 import 'Search.dart';
 
 void main() {
-  // state.getList();
-  //state.fetchJoke();
   runApp(MyApp());
 }
 
@@ -139,7 +138,8 @@ class Homeview extends StatelessWidget {
     return Row(children: [
       BouncingWidget(
           onPressed: () {
-            createJokePopup(context);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => JokesView()));
           },
           child: Container(
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -220,16 +220,5 @@ class Homeview extends StatelessWidget {
                         ))
                   ]))))
     ]);
-  }
-
-  createJokePopup(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('Nothing works just ignore this'),
-            actions: [IconButton(icon: Icon(Icons.cancel), onPressed: () {})],
-          );
-        });
   }
 }
