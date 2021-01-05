@@ -22,7 +22,7 @@ class _JokesViewState extends State<JokesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent[100],
+        backgroundColor: Colors.greenAccent[100],
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -37,49 +37,51 @@ class _JokesViewState extends State<JokesView> {
           centerTitle: true,
         ),
         body: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text(
-            'A funny joke',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: FutureBuilder<JokeItem>(
-                future: futureJokeItem,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.text,
-                        style: TextStyle(
-                          fontSize: 25,
-                        ));
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  return CircularProgressIndicator();
-                }),
-          ),
-          SizedBox(
-            height: 150,
-          ),
-          Text(
-            'An interesting fact',
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: FutureBuilder<TriviaItem>(
-                future: futureTriviaItem,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.text,
-                        style: TextStyle(fontSize: 25));
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  return CircularProgressIndicator();
-                }),
-          )
-        ])));
+            child: SingleChildScrollView(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+              Text(
+                'A funny joke',
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: FutureBuilder<JokeItem>(
+                    future: futureJokeItem,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(snapshot.data.text,
+                            style: TextStyle(
+                              fontSize: 25,
+                            ));
+                      } else if (snapshot.hasError) {
+                        return Text("${snapshot.error}");
+                      }
+                      return CircularProgressIndicator();
+                    }),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Text(
+                'An interesting fact',
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: FutureBuilder<TriviaItem>(
+                    future: futureTriviaItem,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Text(snapshot.data.text,
+                            style: TextStyle(fontSize: 25));
+                      } else if (snapshot.hasError) {
+                        return Text("${snapshot.error}");
+                      }
+                      return CircularProgressIndicator();
+                    }),
+              )
+            ]))));
   }
 }
