@@ -14,12 +14,12 @@ class FocusIngredients extends StatefulWidget {
 }
 
 class _FocusIngredientsState extends State<FocusIngredients> {
-  var recipeInfo;
+  var itemInfo;
 
   void _getRecipeInformation(RecipeItem item) async {
     var information = await FetchAPI.getRecipeId(item);
     setState(() {
-      recipeInfo = information;
+      itemInfo = information;
     });
   }
 
@@ -37,7 +37,7 @@ class _FocusIngredientsState extends State<FocusIngredients> {
                 .pop(MaterialPageRoute(builder: (context) => Search())),
           ),
           backgroundColor: Colors.greenAccent[100],
-          title: Text(recipeInfo.item.title,
+          title: Text(itemInfo.item.title,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -70,14 +70,14 @@ class _FocusIngredientsState extends State<FocusIngredients> {
       width: 425,
       padding: EdgeInsets.only(bottom: 10),
       child: Image(
-        image: NetworkImage(recipeInfo.item.image),
+        image: NetworkImage(itemInfo.item.image),
         fit: BoxFit.cover,
       ),
     );
   }
 
   Widget _ingredientsList() {
-    var ingredient = recipeInfo.ingredient;
+    var ingredient = itemInfo.ingredient;
     return ListView.builder(
         itemCount: ingredient.length,
         itemBuilder: (context, index) {
@@ -90,7 +90,7 @@ class _FocusIngredientsState extends State<FocusIngredients> {
   }
 
   Widget _instructionList() {
-    var instruction = recipeInfo.instruction;
+    var instruction = itemInfo.instruction;
     return ListView.builder(
         itemCount: instruction.length,
         itemBuilder: (context, index) {

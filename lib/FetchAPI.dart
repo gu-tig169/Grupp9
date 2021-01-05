@@ -65,6 +65,7 @@ class FetchAPI {
   static Future getRecipeId(RecipeItem item) async {
     var ingredient = await getRecipeIngredients(item.id);
     var instruction = await getRecipeInstructions(item.id);
+
     return RecipeItemInfo(
         ingredient: ingredient, instruction: instruction, item: item);
   }

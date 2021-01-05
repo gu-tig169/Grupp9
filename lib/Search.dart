@@ -126,29 +126,28 @@ class _SearchState extends State<Search> {
                         bottom: 0,
                         height: 130,
                         child: ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20)),
-                            child: BackdropFilter(
-                              filter:
-                                  ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                              child: Padding(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20)),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                            child: Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Container(
-                                    height: 100,
-                                    width: 375,
-                                    color: Colors.black.withOpacity(0),
-                                    child: Center(
-                                      child: Text(
-                                        items[index].title + '\nTime to make: ' + items[index].readyInMinutes.toString() + ' minutes' + '\nServings: ' + items[index].servings.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                            color: Colors.black),
-                                      ),
-                                    )),
-                              ),
-                            )))
+                                  height: 100,
+                                  width: 375,
+                                  alignment: Alignment.bottomLeft,
+                                  child: Text(
+                                    items[index].title,
+                                    style: TextStyle(
+                                        backgroundColor: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25,
+                                        color: Colors.black.withOpacity(1)),
+                                  ),
+                                )),
+                          ),
+                        ))
                   ],
                 )),
             onTap: () {

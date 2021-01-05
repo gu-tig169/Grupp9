@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:projectapp/models/RecipeItemModel.dart';
-
 import 'FetchAPI.dart';
 import 'Search.dart';
 
@@ -46,9 +45,31 @@ class _FocusRecipeViewState extends State<FocusRecipeView> {
         body: Center(
           child: Column(children: [
             _picture(context),
-            Text(
-              'Ingredients',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Ready in: ' +
+                      itemInfo.item.readyInMinutes.toString() +
+                      ' min',
+                  style: TextStyle(fontSize: 18, color: Colors.black),
+                ),
+                Container(width: 200),
+                Icon(Icons.people, size: 30, color: Colors.black),
+                Container(width: 10),
+                Text(
+                  itemInfo.item.servings.toString(),
+                  style: TextStyle(fontSize: 18, color: Colors.black),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Text(
+                  'Ingredients',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ],
             ),
             Expanded(
               child: _ingredientList(),
