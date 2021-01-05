@@ -18,19 +18,12 @@ class _FocusIngredientsState extends State<FocusIngredients> {
   var itemInfo;
 
   void _getRecipeInformation(RecipeItem item) async {
-<<<<<<< HEAD
-    var information = await FetchAPI.getRecipeId(item);
-    setState(() {
-      itemInfo = information;
-    });
-=======
     try {
       var information = await FetchAPI.getRecipeId(item);
       setState(() {
-        recipeInfo = information;
+        itemInfo = information;
       });
     } catch (e) {}
->>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480
   }
 
   initState() {
@@ -39,36 +32,7 @@ class _FocusIngredientsState extends State<FocusIngredients> {
   }
 
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Navigator.of(context)
-                .pop(MaterialPageRoute(builder: (context) => Search())),
-          ),
-          backgroundColor: Colors.greenAccent[100],
-          title: Text(itemInfo.item.title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
-        ),
-        body: Center(
-          child: Column(children: [
-            _picture(context),
-            Text(
-              'Ingredients',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-            Expanded(
-              child: _ingredientsList(),
-            ),
-            Text(
-              'Instructions',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-=======
-    if (recipeInfo == null) {
+    if (itemInfo == null) {
       return Loading();
     } else {
       return Scaffold(
@@ -77,10 +41,9 @@ class _FocusIngredientsState extends State<FocusIngredients> {
               icon: Icon(Icons.arrow_back_ios, color: Colors.black),
               onPressed: () => Navigator.of(context)
                   .pop(MaterialPageRoute(builder: (context) => Search())),
->>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480
             ),
             backgroundColor: Colors.greenAccent[100],
-            title: Text(recipeInfo.item.title,
+            title: Text(itemInfo.item.title,
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,

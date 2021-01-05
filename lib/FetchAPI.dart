@@ -80,13 +80,6 @@ class FetchAPI {
   }
 
   static Future getRecipeId(RecipeItem item) async {
-<<<<<<< HEAD
-    var ingredient = await getRecipeIngredients(item.id);
-    var instruction = await getRecipeInstructions(item.id);
-
-    return RecipeItemInfo(
-        ingredient: ingredient, instruction: instruction, item: item);
-=======
     try {
       var ingredient = await getRecipeIngredients(item.id);
       var instruction = await getRecipeInstructions(item.id);
@@ -95,7 +88,6 @@ class FetchAPI {
     } catch (e) {
       throw Exception('Failed to load recipes. Error: ' + e);
     }
->>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480
   }
 
 //TODO: måste man returnera något här?

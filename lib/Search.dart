@@ -127,7 +127,6 @@ class _SearchState extends State<Search> {
                             child: Padding(
                                 padding: EdgeInsets.all(10),
                                 child: Container(
-<<<<<<< HEAD
                                   height: 100,
                                   width: 375,
                                   alignment: Alignment.bottomLeft,
@@ -142,29 +141,6 @@ class _SearchState extends State<Search> {
                                 )),
                           ),
                         ))
-=======
-                                    height: 100,
-                                    width: 375,
-                                    color: Colors.black.withOpacity(0),
-                                    child: Center(
-                                      child: Text(
-                                        items[index].title +
-                                            '\nTime to make: ' +
-                                            items[index]
-                                                .readyInMinutes
-                                                .toString() +
-                                            ' minutes' +
-                                            '\nServings: ' +
-                                            items[index].servings.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                            color: Colors.black),
-                                      ),
-                                    )),
-                              ),
-                            )))
->>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480
                   ],
                 )),
             onTap: () {
