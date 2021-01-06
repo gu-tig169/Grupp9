@@ -1,17 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-<<<<<<< HEAD:lib/views/fridge.dart
 
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
 import 'package:projectapp/views/focus_ingredient.dart';
-=======
-import 'package:projectapp/loading/Loading.dart';
-import 'FetchAPI.dart';
-import 'FocusIngredients.dart';
-import 'package:projectapp/models/RecipeItemModel.dart';
->>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480:lib/Fridge.dart
+import 'package:projectapp/widgets/loading_widget.dart';
 
 class Fridge extends StatefulWidget {
   final List<RecipeItem> list;

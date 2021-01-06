@@ -1,15 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD:lib/views/focus_ingredient.dart
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
 import 'package:projectapp/views/recipe_view.dart';
-=======
-import 'FetchAPI.dart';
-import 'Search.dart';
-import 'loading/Loading.dart';
->>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480:lib/FocusIngredients.dart
+import 'package:projectapp/widgets/loading_widget.dart';
 
 class FocusIngredients extends StatefulWidget {
   final RecipeItem item;

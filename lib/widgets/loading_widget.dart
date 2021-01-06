@@ -29,14 +29,6 @@ class LoadingState extends State<Loading> {
                 valueColor: new AlwaysStoppedAnimation<Color>(Colors.black12),
                 strokeWidth: 10,
               ),
-              SizedBox(
-                height: 15,
-              ),
-              LinearProgressIndicator(
-                backgroundColor: Colors.greenAccent[100],
-                valueColor: new AlwaysStoppedAnimation<Color>(Colors.black12),
-                minHeight: 20,
-              ),
             ],
           ),
         ));
