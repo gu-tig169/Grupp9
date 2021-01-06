@@ -1,10 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:projectapp/FetchAPI.dart';
-import 'package:projectapp/FocusRecipeView.dart';
-import 'loading/Loading.dart';
-import 'models/RecipeItemModel.dart';
+
+import 'package:projectapp/models/recipe_item_model.dart';
+import 'package:projectapp/service/fetch_api.dart';
+import 'package:projectapp/views/focus_recipe_view.dart';
+import 'package:projectapp/widgets/loading_widget.dart';
 
 //sätta i klassen
 TextEditingController textEditingController = TextEditingController();

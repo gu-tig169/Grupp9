@@ -1,9 +1,9 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:projectapp/Fridge.dart';
 
-import 'JokesAndTriviaView.dart';
-import 'Search.dart';
+import 'package:projectapp/views/fridge.dart';
+import 'package:projectapp/views/jokes_and_trivia_view.dart';
+import 'package:projectapp/views/recipe_view.dart';
 
 void main() {
   runApp(MyApp());

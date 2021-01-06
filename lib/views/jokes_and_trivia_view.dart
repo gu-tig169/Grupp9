@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projectapp/FetchAPI.dart';
-import 'package:projectapp/models/JokeModel.dart';
-import 'package:projectapp/models/TriviaModel.dart';
+
+import 'package:projectapp/models/joke_model.dart';
+import 'package:projectapp/models/trivia_model.dart';
+import 'package:projectapp/service/fetch_api.dart';
 
 class JokesView extends StatefulWidget {
   @override
