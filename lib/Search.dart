@@ -116,31 +116,28 @@ class _SearchState extends State<Search> {
                                       items[index].image)),
                             ))),
                     Positioned(
-                        bottom: 0,
-                        height: 130,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20)),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                            child: Padding(
-                                padding: EdgeInsets.all(10),
-                                child: Container(
-                                  height: 100,
-                                  width: 375,
-                                  alignment: Alignment.bottomLeft,
-                                  child: Text(
-                                    items[index].title,
-                                    style: TextStyle(
-                                        backgroundColor: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 25,
-                                        color: Colors.black.withOpacity(1)),
-                                  ),
-                                )),
-                          ),
-                        ))
+                      bottom: 0,
+                      height: 100,
+                      child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.greenAccent[100],
+                                border: Border.all(width: 2),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            height: 100,
+                            width: 375,
+                            alignment: Alignment.center,
+                            child: Text(
+                              items[index].title,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                  color: Colors.black.withOpacity(1)),
+                            ),
+                          )),
+                    ),
                   ],
                 )),
             onTap: () {
