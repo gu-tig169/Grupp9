@@ -133,7 +133,7 @@ class _SearchState extends State<Search> {
                               items[index].title,
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 25,
+                                  fontSize: 20,
                                   color: Colors.black.withOpacity(1)),
                             ),
                           )),
