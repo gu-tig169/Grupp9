@@ -1,6 +1,6 @@
-import 'package:projectapp/models/IngredientModel.dart';
-import 'package:projectapp/models/RecipeItemModel.dart';
-import 'package:projectapp/models/InstructionModel.dart';
+import 'package:projectapp/models/ingredient_model.dart';
+import 'package:projectapp/models/instruction_model.dart';
+import 'package:projectapp/models/recipe_item_model.dart';
 
 class RecipeItemInfo {
   RecipeItem item;

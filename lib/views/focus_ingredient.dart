@@ -1,29 +1,27 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:projectapp/models/RecipeItemModel.dart';
 
-import 'FetchAPI.dart';
-import 'Search.dart';
-import 'loading/Loading.dart';
+import 'package:projectapp/models/recipe_item_model.dart';
+import 'package:projectapp/service/fetch_api.dart';
+import 'package:projectapp/views/recipe_view.dart';
+import 'package:projectapp/widgets/loading_widget.dart';
 
-class FocusRecipeView extends StatefulWidget {
+class FocusIngredients extends StatefulWidget {
   final RecipeItem item;
-  FocusRecipeView(this.item);
+  FocusIngredients(this.item);
 
   @override
-  _FocusRecipeViewState createState() => _FocusRecipeViewState();
+  _FocusIngredientsState createState() => _FocusIngredientsState();
 }
 
-class _FocusRecipeViewState extends State<FocusRecipeView> {
-  var itemInfo;
-  //bool error = true;
+class _FocusIngredientsState extends State<FocusIngredients> {
+  var recipeInfo;
 
   void _getRecipeInformation(RecipeItem item) async {
     try {
       var information = await FetchAPI.getRecipeId(item);
       setState(() {
-        //   error = false;
-        itemInfo = information;
+        recipeInfo = information;
       });
     } catch (e) {}
   }
@@ -34,33 +32,32 @@ class _FocusRecipeViewState extends State<FocusRecipeView> {
   }
 
   Widget build(BuildContext context) {
-    if (itemInfo == null) {
+    if (recipeInfo == null) {
       return Loading();
     } else {
       return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Navigator.of(context)
-                .pop(MaterialPageRoute(builder: (context) => Search())),
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+              onPressed: () => Navigator.of(context)
+                  .pop(MaterialPageRoute(builder: (context) => Search())),
+            ),
+            backgroundColor: Colors.greenAccent[100],
+            title: Text(recipeInfo.item.title,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
           ),
-          backgroundColor: Colors.greenAccent[100],
-          title: Text(itemInfo.item.title,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold)),
-        ),
-        body: Center(
-          child: Column(
-            children: [
+          body: Center(
+            child: Column(children: [
               _picture(context),
               Text(
                 'Ingredients',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               Expanded(
-                child: _ingredientList(),
+                child: _ingredientsList(),
               ),
               Text(
                 'Instructions',
@@ -69,10 +66,8 @@ class _FocusRecipeViewState extends State<FocusRecipeView> {
               Expanded(
                 child: _instructionList(),
               )
-            ],
-          ),
-        ),
-      );
+            ]),
+          ));
     }
   }
 
@@ -82,15 +77,14 @@ class _FocusRecipeViewState extends State<FocusRecipeView> {
       width: 425,
       padding: EdgeInsets.only(bottom: 10),
       child: Image(
-        image: NetworkImage(
-            'https://spoonacular.com/recipeImages/' + itemInfo.item.image),
+        image: NetworkImage(recipeInfo.item.image),
         fit: BoxFit.cover,
       ),
     );
   }
 
-  Widget _ingredientList() {
-    var ingredient = itemInfo.ingredient;
+  Widget _ingredientsList() {
+    var ingredient = recipeInfo.ingredient;
     return ListView.builder(
         itemCount: ingredient.length,
         itemBuilder: (context, index) {
@@ -103,7 +97,7 @@ class _FocusRecipeViewState extends State<FocusRecipeView> {
   }
 
   Widget _instructionList() {
-    var instruction = itemInfo.instruction;
+    var instruction = recipeInfo.instruction;
     return ListView.builder(
         itemCount: instruction.length,
         itemBuilder: (context, index) {

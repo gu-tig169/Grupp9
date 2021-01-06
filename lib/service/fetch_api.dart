@@ -1,12 +1,13 @@
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:projectapp/models/IngredientModel.dart';
-import 'package:projectapp/models/InstructionModel.dart';
-import 'package:projectapp/models/JokeModel.dart';
-import 'package:projectapp/models/TriviaModel.dart';
-import 'models/RecipeItemModel.dart';
-import 'models/RecipeItemInfo.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:projectapp/models/ingredient_model.dart';
+import 'package:projectapp/models/instruction_model.dart';
+import 'package:projectapp/models/joke_model.dart';
+import 'package:projectapp/models/recipe_item_info.dart';
+import 'package:projectapp/models/recipe_item_model.dart';
+import 'package:projectapp/models/trivia_model.dart';
 
 const APIURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com';
 
