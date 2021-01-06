@@ -1,10 +1,17 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+<<<<<<< HEAD:lib/views/fridge.dart
 
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
 import 'package:projectapp/views/focus_ingredient.dart';
+=======
+import 'package:projectapp/loading/Loading.dart';
+import 'FetchAPI.dart';
+import 'FocusIngredients.dart';
+import 'package:projectapp/models/RecipeItemModel.dart';
+>>>>>>> 0ea836a6cab9126c098f084ca99658b3383be480:lib/Fridge.dart
 
 class Fridge extends StatefulWidget {
   final List<RecipeItem> list;
@@ -17,65 +24,60 @@ TextEditingController _searchController = new TextEditingController();
 
 class _FridgeState extends State<Fridge> {
   var items;
+
   Future _getIngredients(String ingredients) async {
-    var item = await FetchAPI.getIngredientsSearch(ingredients);
-    setState(() {
-      items = item;
-    });
+    try {
+      var item = await FetchAPI.getIngredientsSearch(ingredients);
+      setState(() {
+        items = item;
+      });
+    } catch (e) {}
   }
 
   initState() {
     super.initState();
-    _getIngredients("");
+    _getIngredients('');
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-              onPressed: () => Navigator.of(context).pop()),
-          title: Text("What's in the fridge?",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black)),
-          centerTitle: true,
-          backgroundColor: Colors.greenAccent[100],
-        ),
-        body: Center(
-            child: Column(children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 15, right: 15),
-            child: Text(
-              'Get inspiration on recipes based on ingredients followed by commas',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    if (items == null) {
+      return Loading();
+    } else {
+      return Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                onPressed: () => Navigator.of(context).pop()),
+            title: Text("What's in the fridge?",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black)),
+            centerTitle: true,
+            backgroundColor: Colors.greenAccent[100],
+          ),
+          body: Center(
+              child: Column(children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(top: 10, left: 15, right: 15),
+              child: Text(
+                'Get inspiration on recipes based on ingredients followed by commas',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: _textField2(),
-          ),
-          Expanded(
-            child: _showScreen2(),
-          )
-        ])));
-  }
-
-  Widget _showScreen2() {
-    try {
-      if (items == null) {
-        return Center(child: CircularProgressIndicator());
-      }
-    } catch (e) {
-      print(e);
-      throw e;
+            Padding(
+              padding: EdgeInsets.all(10.0),
+              child: _textField(),
+            ),
+            Expanded(
+              child: _recipeCard(),
+            )
+          ])));
     }
-    return _recipeCard2();
   }
 
-  Widget _textField2() {
+  Widget _textField() {
     return TextField(
         onChanged: (String text) {
           _getIngredients(_searchController.text);
@@ -87,7 +89,7 @@ class _FridgeState extends State<Fridge> {
               onPressed: () {
                 _searchController.text = '';
               }),
-          hintText: 'Example: tomato, garlic, pasta, parsley...',
+          hintText: 'Example: garlic, pasta, parsley, chicken...',
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(15)),
             borderSide: BorderSide(color: Colors.black, width: 1.5),
@@ -100,7 +102,7 @@ class _FridgeState extends State<Fridge> {
         ));
   }
 
-  Widget _recipeCard2() {
+  Widget _recipeCard() {
     return ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -151,7 +153,7 @@ class _FridgeState extends State<Fridge> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FocusIngredients(item: items[index]),
+                    builder: (context) => FocusIngredients(items[index]),
                   ));
             },
           );
