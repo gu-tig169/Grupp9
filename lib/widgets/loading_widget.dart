@@ -12,6 +12,9 @@ class LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+              onPressed: () => Navigator.of(context).pop()),
           title: Text("Loading...",
               style: TextStyle(
                   fontSize: 20,
