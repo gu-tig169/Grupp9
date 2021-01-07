@@ -10,15 +10,16 @@ import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/models/trivia_model.dart';
 
 const APIURL = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com';
+Map<String, String> keyHeader = {
+  'X-RapidAPI-Key': "60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705"
+};
 
 class FetchAPI {
   static Future<List<RecipeItem>> getRecipeSearch(String query) async {
     try {
-      var response = await http
-          .get('$APIURL/recipes/search?query=$query', headers: {
-        'X-RapidAPI-Key': "60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705"
-      });
-      var json = jsonDecode(response.body);
+      var response = await http.get('$APIURL/recipes/search?query=$query',
+          headers: keyHeader);
+      var json = jsonDecode(utf8.decode(response.bodyBytes));
       print(response.body);
       return json['results'].map<RecipeItem>((data) {
         return RecipeItem.fromJson(data);
@@ -33,11 +34,8 @@ class FetchAPI {
     try {
       var response = await http.get(
           '$APIURL/recipes/findByIngredients?ingredients=$ingredients',
-          headers: {
-            'X-RapidAPI-Key':
-                "60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705"
-          });
-      var json = jsonDecode(response.body);
+          headers: keyHeader);
+      var json = jsonDecode(utf8.decode(response.bodyBytes));
       print(response.body);
       return json.map<RecipeItem>((data) {
         return RecipeItem.fromJson(data);
@@ -49,28 +47,23 @@ class FetchAPI {
 
   static Future<List<Ingredients>> getRecipeIngredients(int id) async {
     try {
-      var response = await http
-          .get('$APIURL/recipes/$id/information', headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'X-RapidAPI-Key': "60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705"
-      });
-      var json = jsonDecode(response.body);
+      var response =
+          await http.get('$APIURL/recipes/$id/information', headers: keyHeader);
+      var json = jsonDecode(utf8.decode(response.bodyBytes));
       print(response.body);
       return json['extendedIngredients'].map<Ingredients>((data) {
         return Ingredients.fromJson(data);
       }).toList();
     } catch (e) {
-      throw throw Exception('Failed to load ingredients. Error: ' + e);
+      throw Exception('Failed to load ingredients. Error: ' + e);
     }
   }
 
   static Future<List<Instructions>> getRecipeInstructions(int id) async {
     try {
-      var response = await http
-          .get('$APIURL/recipes/$id/analyzedInstructions', headers: {
-        'X-RapidAPI-Key': '60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705'
-      });
-      var json = jsonDecode(response.body);
+      var response = await http.get('$APIURL/recipes/$id/analyzedInstructions',
+          headers: keyHeader);
+      var json = jsonDecode(utf8.decode(response.bodyBytes));
       print(json);
       return json[0]['steps'].map<Instructions>((data) {
         return Instructions.fromJson(data);
@@ -91,14 +84,12 @@ class FetchAPI {
     }
   }
 
-//TODO: måste man returnera något här?
   static Future<JokeItem> getJokesList() async {
     var response;
     try {
-      final response = await http.get('$APIURL/food/jokes/random', headers: {
-        'X-RapidAPI-Key': '60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705'
-      });
-      var json = jsonDecode(response.body);
+      final response =
+          await http.get('$APIURL/food/jokes/random', headers: keyHeader);
+      var json = jsonDecode(utf8.decode(response.bodyBytes));
       if (response.statusCode == 200) {
         return JokeItem.fromJson(json);
       }
@@ -108,15 +99,14 @@ class FetchAPI {
     return response;
   }
 
-//TODO: måste man returnera något här?
   static Future<TriviaItem> getTriviaList() async {
     var response;
     try {
-      final response = await http.get('$APIURL/food/trivia/random', headers: {
-        'X-RapidAPI-Key': '60e8154215mshb154a16e630ef85p138ab7jsna8e33460c705'
-      });
+      final response =
+          await http.get('$APIURL/food/trivia/random', headers: keyHeader);
+      var json = jsonDecode(utf8.decode(response.bodyBytes));
       if (response.statusCode == 200) {
-        return TriviaItem.fromJson(jsonDecode(response.body));
+        return TriviaItem.fromJson(json);
       }
     } catch (e) {
       throw Exception('Failed to load trivia. Error: ' + e);
