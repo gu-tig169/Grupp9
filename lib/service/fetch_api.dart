@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -26,7 +25,7 @@ class FetchAPI {
         return RecipeItem.fromJson(data);
       }).toList();
     } else {
-      Exception('Failed to search recipes');
+      throw Exception('Failed to search recipes');
     }
   }
 
@@ -42,7 +41,7 @@ class FetchAPI {
         return RecipeItem.fromJson(data);
       }).toList();
     } else {
-      Exception('Failed to search ingredients');
+      throw Exception('Failed to search ingredients');
     }
   }
 
@@ -56,7 +55,7 @@ class FetchAPI {
         return Ingredients.fromJson(data);
       }).toList();
     } else {
-      Exception('Failed to load ingredients');
+      throw Exception('Failed to load ingredients');
     }
   }
 
@@ -70,7 +69,7 @@ class FetchAPI {
         return Instructions.fromJson(data);
       }).toList();
     } else {
-      Exception('Failed to load recipe instructions');
+      throw Exception('Failed to load recipe instructions');
     }
   }
 
