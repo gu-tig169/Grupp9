@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
-import 'package:projectapp/screens/focus_ingredient_view.dart';
+import 'package:projectapp/screens/focus_views/focus_ingredient_view.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
 class IngredientSearch extends StatefulWidget {
