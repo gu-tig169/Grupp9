@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
               suffixIcon: IconButton(
                   icon: Icon(Icons.cancel),
                   onPressed: () {
-                    controller.text = '';
+                    controller.clear();
                   }),
               hintText: hintText,
               enabledBorder: OutlineInputBorder(

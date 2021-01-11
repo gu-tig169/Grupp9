@@ -40,28 +40,25 @@ class _IngredientSearchState extends State<IngredientSearch> {
     } else {
       return Scaffold(
           appBar: CustomAppBar(title: "What's in the fridge?"),
-          body: Center(
-              child: Column(children: <Widget>[
-            _inspirationText(),
-            CustomTextField(_searchController, 'garlic, parsley, cheese...',
-                onChanged: () {
-              _getIngredients(_searchController.text);
-            }),
-            Expanded(
-                child: ListView.builder(
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      return CustomCard(items[index].image, items[index].title,
-                          onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  FocusIngredients(items[index]),
-                            ));
-                      });
-                    }))
-          ])));
+          body: CustomScrollView(slivers: [
+            SliverAppBar(
+              pinned: false,
+              floating: true,
+              snap: false,
+              backgroundColor: Colors.white,
+              automaticallyImplyLeading: false,
+              expandedHeight: 80,
+              flexibleSpace: CustomTextField(
+                  _searchController, 'garlic, parsley, cheese...',
+                  onChanged: () {
+                _getIngredients(_searchController.text);
+              }),
+            ),
+            SliverList(
+                delegate: SliverChildListDelegate([
+              Column(children: [_inspirationText(), _listBuilder()])
+            ]))
+          ]));
     }
   }
 
@@ -73,5 +70,21 @@ class _IngredientSearchState extends State<IngredientSearch> {
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       ),
     );
+  }
+
+  Widget _listBuilder() {
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return CustomCard(items[index].image, items[index].title, onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FocusIngredients(items[index]),
+                ));
+          });
+        });
   }
 }

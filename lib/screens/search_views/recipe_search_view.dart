@@ -40,31 +40,28 @@ class _RecipeSearchState extends State<RecipeSearch> {
     } else {
       return Scaffold(
           appBar: CustomAppBar(title: 'Find a Recipe'),
-          body: Center(
-              child: Column(children: [
-            CustomTextField(textEditingController, 'Search dish...',
-                onChanged: () {
-              _getRecipes(textEditingController.text);
-            }),
-            _recipesText(),
-            _dividerLine(),
-            Expanded(
-                child: ListView.builder(
-                    itemCount: items.length,
-                    itemBuilder: (context, index) {
-                      return CustomCard(
-                          'https://spoonacular.com/recipeImages/' +
-                              items[index].image,
-                          items[index].title, onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  FocusRecipeView(items[index]),
-                            ));
-                      });
-                    }))
-          ])));
+          body: CustomScrollView(slivers: [
+            SliverAppBar(
+              pinned: false,
+              floating: true,
+              snap: false,
+              backgroundColor: Colors.white,
+              automaticallyImplyLeading: false,
+              expandedHeight: 80,
+              flexibleSpace: CustomTextField(
+                  textEditingController, 'Search dish...', onChanged: () {
+                _getRecipes(textEditingController.text);
+              }),
+            ),
+            SliverList(
+                delegate: SliverChildListDelegate([
+              Column(children: [
+                _recipesText(),
+                _dividerLine(),
+                _listBuilder(),
+              ])
+            ]))
+          ]));
     }
   }
 
@@ -79,5 +76,23 @@ class _RecipeSearchState extends State<RecipeSearch> {
     return Padding(
         padding: EdgeInsets.only(left: 10.0, right: 10.0),
         child: Divider(thickness: 2, color: Colors.grey[700]));
+  }
+
+  Widget _listBuilder() {
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return CustomCard(
+              'https://spoonacular.com/recipeImages/' + items[index].image,
+              items[index].title, onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FocusRecipeView(items[index]),
+                ));
+          });
+        });
   }
 }
