@@ -1,13 +1,12 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
+import 'package:projectapp/screens/search_views/widgets/card.dart';
+import 'package:projectapp/screens/search_views/widgets/textfield.dart';
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
 import 'package:projectapp/screens/focus_views/focus_recipe_view.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
-//sätta i klassen
 TextEditingController textEditingController = TextEditingController();
 
 class RecipeSearch extends StatefulWidget {
@@ -20,7 +19,6 @@ class RecipeSearch extends StatefulWidget {
 
 class _RecipeSearchState extends State<RecipeSearch> {
   var items;
-
   Future _getRecipes(String query) async {
     try {
       var item = await FetchAPI.getRecipeSearch(query);
@@ -30,6 +28,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
     } catch (e) {}
   }
 
+//TODO: Samma här då, som ovan alltså.
   initState() {
     super.initState();
     _getRecipes('');
@@ -54,41 +53,23 @@ class _RecipeSearchState extends State<RecipeSearch> {
           ),
           body: Center(
               child: Column(children: [
-            _textField(),
+            CustomTextField(textEditingController, 'Search dish...',
+                onChanged: () {
+              _getRecipes(textEditingController.text);
+            }),
             _recipesText(),
             _dividerLine(),
             Expanded(
-              child: _recipeCard(),
+              child: CustomCard(
+                items,
+                'https://spoonacular.com/recipeImages/',
+                onTap: () {
+                  print('Fixa detta i card.dart');
+                },
+              ),
             )
           ])));
     }
-  }
-
-  Widget _textField() {
-    return Padding(
-        padding: EdgeInsets.all(10.0),
-        child: TextField(
-            onChanged: (String text) {
-              _getRecipes(textEditingController.text);
-            },
-            controller: textEditingController,
-            decoration: InputDecoration(
-              suffixIcon: IconButton(
-                  icon: Icon(Icons.cancel),
-                  onPressed: () {
-                    textEditingController.text = '';
-                  }),
-              hintText: 'Search dish...',
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                borderSide: BorderSide(color: Colors.black, width: 1.5),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                borderSide: BorderSide(color: Colors.blue, width: 1.5),
-              ),
-              prefixIcon: Icon(Icons.search),
-            )));
   }
 
   Widget _recipesText() {

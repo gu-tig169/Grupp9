@@ -16,7 +16,7 @@ Map<String, String> keyHeader = {
 
 class FetchAPI {
   static Future<List<RecipeItem>> getRecipeSearch(String query) async {
-    try {
+   
       var response = await http.get('$APIURL/recipes/search?query=$query',
           headers: keyHeader);
       var json = jsonDecode(utf8.decode(response.bodyBytes));
@@ -24,10 +24,8 @@ class FetchAPI {
       return json['results'].map<RecipeItem>((data) {
         return RecipeItem.fromJson(data);
       }).toList();
-    } catch (e) {
-      throw Exception('Failed to search recipes. Error: ' + e);
     }
-  }
+  
 
   static Future<List<RecipeItem>> getIngredientsSearch(
       String ingredients) async {
