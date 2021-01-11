@@ -3,19 +3,16 @@ import 'package:projectapp/screens/focus_views/focus_ingredient_view.dart';
 import 'package:projectapp/screens/search_views/widgets/card.dart';
 import 'package:projectapp/screens/search_views/widgets/textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
 import 'package:projectapp/widgets/appBar_widget.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
+TextEditingController _searchController = TextEditingController();
+
 class IngredientSearch extends StatefulWidget {
-  final List<RecipeItem> list;
-  IngredientSearch({this.list});
   @override
   _IngredientSearchState createState() => _IngredientSearchState();
 }
-
-TextEditingController _searchController = new TextEditingController();
 
 class _IngredientSearchState extends State<IngredientSearch> {
   var items;
@@ -30,7 +27,7 @@ class _IngredientSearchState extends State<IngredientSearch> {
 
   initState() {
     super.initState();
-    _getIngredients('');
+    _getIngredients(_searchController.text);
   }
 
   @override
