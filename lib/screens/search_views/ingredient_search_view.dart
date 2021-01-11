@@ -4,7 +4,7 @@ import 'package:projectapp/screens/search_views/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
-import 'package:projectapp/screens/focus_views/focus_ingredient_view.dart';
+import 'package:projectapp/widgets/appBar_widget.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
 class IngredientSearch extends StatefulWidget {
@@ -38,18 +38,7 @@ class _IngredientSearchState extends State<IngredientSearch> {
       return Loading();
     } else {
       return Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-                onPressed: () => Navigator.of(context).pop()),
-            title: Text("What's in the fridge?",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black)),
-            centerTitle: true,
-            backgroundColor: Colors.greenAccent[100],
-          ),
+          appBar: CustomAppBar(title: "What's in the fridge?"),
           body: Center(
               child: Column(children: <Widget>[
             _inspirationText(),
