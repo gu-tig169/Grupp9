@@ -2,18 +2,14 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:projectapp/screens/search_views/widgets/card.dart';
 import 'package:projectapp/screens/search_views/widgets/textfield.dart';
-import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
 import 'package:projectapp/screens/focus_views/focus_recipe_view.dart';
 import 'package:projectapp/widgets/appBar_widget.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
-TextEditingController textEditingController = TextEditingController();
+TextEditingController _textEditingController = TextEditingController();
 
 class RecipeSearch extends StatefulWidget {
-  final List<RecipeItem> list;
-  RecipeSearch({this.list});
-
   @override
   _RecipeSearchState createState() => _RecipeSearchState();
 }
@@ -31,7 +27,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
 
   initState() {
     super.initState();
-    _getRecipes('');
+    _getRecipes(_textEditingController.text);
   }
 
   Widget build(BuildContext context) {
@@ -42,9 +38,9 @@ class _RecipeSearchState extends State<RecipeSearch> {
           appBar: CustomAppBar(title: 'Find a Recipe'),
           body: Center(
               child: Column(children: [
-            CustomTextField(textEditingController, 'Search dish...',
+            CustomTextField(_textEditingController, 'Search dish...',
                 onChanged: () {
-              _getRecipes(textEditingController.text);
+              _getRecipes(_textEditingController.text);
             }),
             _recipesText(),
             _dividerLine(),
