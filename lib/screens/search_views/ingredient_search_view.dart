@@ -1,8 +1,9 @@
 import 'dart:ui';
+import 'package:projectapp/screens/search_views/widgets/card.dart';
+import 'package:projectapp/screens/search_views/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
-import 'package:projectapp/screens/focus_views/focus_ingredient_view.dart';
 import 'package:projectapp/widgets/appBar_widget.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
@@ -17,7 +18,8 @@ TextEditingController _searchController = new TextEditingController();
 
 class _IngredientSearchState extends State<IngredientSearch> {
   var items;
-
+//TODO: KONCZ, kolla så att detta är samma som i den vanliga branchen, så inte denna orsaker något error. ->
+// -> Denna är trots allt den enda funktionen i klassen som kallar på apin
   Future _getIngredients(String ingredients) async {
     try {
       var item = await FetchAPI.getIngredientsSearch(ingredients);
@@ -27,6 +29,7 @@ class _IngredientSearchState extends State<IngredientSearch> {
     } catch (e) {}
   }
 
+//TODO: Samma här då, som ovan alltså.
   initState() {
     super.initState();
     _getIngredients('');
@@ -42,10 +45,18 @@ class _IngredientSearchState extends State<IngredientSearch> {
           body: Center(
               child: Column(children: <Widget>[
             _inspirationText(),
-            _textField(),
+            CustomTextField(_searchController, 'garlic, parsley, cheese...',
+                onChanged: () {
+              _getIngredients(_searchController.text);
+            }),
             Expanded(
-              child: _recipeCard(),
-            )
+                child: CustomCard(
+              items,
+              '',
+              onTap: () {
+                print('Fixa denna i card.dart');
+              },
+            ))
           ])));
     }
   }
@@ -60,34 +71,7 @@ class _IngredientSearchState extends State<IngredientSearch> {
     );
   }
 
-  Widget _textField() {
-    return Padding(
-        padding: EdgeInsets.all(10.0),
-        child: TextField(
-            onChanged: (String text) {
-              _getIngredients(_searchController.text);
-            },
-            controller: _searchController,
-            decoration: InputDecoration(
-              suffixIcon: IconButton(
-                  icon: Icon(Icons.cancel),
-                  onPressed: () {
-                    _searchController.text = '';
-                  }),
-              hintText: 'Example: garlic, pasta, parsley, chicken...',
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                borderSide: BorderSide(color: Colors.black, width: 1.5),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                borderSide: BorderSide(color: Colors.blue, width: 1.5),
-              ),
-              prefixIcon: Icon(Icons.search),
-            )));
-  }
-
-  Widget _recipeCard() {
+  /* Widget _recipeCard() {
     return ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -140,9 +124,9 @@ class _IngredientSearchState extends State<IngredientSearch> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => FocusIngredients(items[index]),
-                  ));
+                  ));//TODO: LÄGG TILL KOD FÖR ONTAP I KONSTRUKTORN
             },
           );
         });
-  }
+  }*/
 }
