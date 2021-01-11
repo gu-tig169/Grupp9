@@ -1,9 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
-import 'package:projectapp/screens/search_views/recipe_search_view.dart';
+import 'package:projectapp/widgets/appBar_widget.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
 class FocusIngredients extends StatefulWidget {
@@ -36,18 +35,8 @@ class _FocusIngredientsState extends State<FocusIngredients> {
       return Loading();
     } else {
       return Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-              onPressed: () => Navigator.of(context)
-                  .pop(MaterialPageRoute(builder: (context) => RecipeSearch())),
-            ),
-            backgroundColor: Colors.greenAccent[100],
-            title: Text(itemInfo.item.title,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
+          appBar: CustomAppBar(
+            title: itemInfo.item.title,
           ),
           body: CustomScrollView(
             slivers: [

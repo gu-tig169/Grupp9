@@ -1,10 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
 import 'package:projectapp/models/recipe_item_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
 import 'package:projectapp/screens/focus_views/focus_recipe_view.dart';
+import 'package:projectapp/widgets/appBar_widget.dart';
 import 'package:projectapp/widgets/loading_widget.dart';
 
 //sätta i klassen
@@ -40,18 +39,7 @@ class _RecipeSearchState extends State<RecipeSearch> {
       return Loading();
     } else {
       return Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-                onPressed: () => Navigator.of(context).pop()),
-            title: Text("Find a recipe",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black)),
-            centerTitle: true,
-            backgroundColor: Colors.greenAccent[100],
-          ),
+          appBar: CustomAppBar(title: 'Find a Recipe'),
           body: Center(
               child: Column(children: [
             _textField(),
