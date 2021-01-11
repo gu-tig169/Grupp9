@@ -18,8 +18,6 @@ TextEditingController _searchController = new TextEditingController();
 
 class _IngredientSearchState extends State<IngredientSearch> {
   var items;
-//TODO: KONCZ, kolla så att detta är samma som i den vanliga branchen, så inte denna orsaker något error. ->
-// -> Denna är trots allt den enda funktionen i klassen som kallar på apin
   Future _getIngredients(String ingredients) async {
     try {
       var item = await FetchAPI.getIngredientsSearch(ingredients);
@@ -29,7 +27,6 @@ class _IngredientSearchState extends State<IngredientSearch> {
     } catch (e) {}
   }
 
-//TODO: Samma här då, som ovan alltså.
   initState() {
     super.initState();
     _getIngredients('');
@@ -61,13 +58,19 @@ class _IngredientSearchState extends State<IngredientSearch> {
               _getIngredients(_searchController.text);
             }),
             Expanded(
-                child: CustomCard(
-              items,
-              '',
-              onTap: () {
-                print('Fixa denna i card.dart');
-              },
-            ))
+                child: ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return CustomCard(items[index].image, items[index].title,
+                          onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  FocusIngredients(items[index]),
+                            ));
+                      });
+                    }))
           ])));
     }
   }
@@ -81,63 +84,4 @@ class _IngredientSearchState extends State<IngredientSearch> {
       ),
     );
   }
-
-  /* Widget _recipeCard() {
-    return ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                        height: 400,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(25)),
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage((items[index].image)),
-                            ))),
-                    Positioned(
-                        bottom: 0,
-                        height: 110,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20)),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                            child: Container(
-                                height: 100,
-                                width: 395,
-                                color: Colors.black.withOpacity(0.5),
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 15.0, right: 15),
-                                    child: Text(
-                                      items[index].title,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w800,
-                                          fontSize: 21,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                )),
-                          ),
-                        ))
-                  ],
-                )),
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => FocusIngredients(items[index]),
-                  ));//TODO: LÄGG TILL KOD FÖR ONTAP I KONSTRUKTORN
-            },
-          );
-        });
-  }*/
 }
