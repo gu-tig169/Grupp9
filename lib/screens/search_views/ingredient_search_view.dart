@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:projectapp/screens/focus_views/focus_ingredient_view.dart';
 import 'package:projectapp/screens/search_views/widgets/card.dart';
 import 'package:projectapp/screens/search_views/widgets/textfield.dart';
 import 'package:flutter/material.dart';
