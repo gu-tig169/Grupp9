@@ -1,9 +1,9 @@
 import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'package:projectapp/screens/ingredient_search_view.dart';
-import 'package:projectapp/screens/jokes_and_trivia_view.dart';
-import 'package:projectapp/screens/recipe_search_view.dart';
+import 'package:projectapp/screens/search_views/ingredient_search_view.dart';
+import 'package:projectapp/screens/joke_trivia_view/jokes_and_trivia_view.dart';
+import 'package:projectapp/screens/search_views/recipe_search_view.dart';
 
 class Homeview extends StatelessWidget {
   @override

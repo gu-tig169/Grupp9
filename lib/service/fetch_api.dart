@@ -19,7 +19,6 @@ class FetchAPI {
     var response = await http.get('$APIURL/recipes/search?query=$query',
         headers: keyHeader);
     var json = jsonDecode(utf8.decode(response.bodyBytes));
-    print(response.body);
     if (response.statusCode == 200) {
       return json['results'].map<RecipeItem>((data) {
         return RecipeItem.fromJson(data);
@@ -35,7 +34,6 @@ class FetchAPI {
         '$APIURL/recipes/findByIngredients?ingredients=$ingredients',
         headers: keyHeader);
     var json = jsonDecode(utf8.decode(response.bodyBytes));
-    print(response.body);
     if (response.statusCode == 200) {
       return json.map<RecipeItem>((data) {
         return RecipeItem.fromJson(data);
@@ -49,7 +47,6 @@ class FetchAPI {
     var response =
         await http.get('$APIURL/recipes/$id/information', headers: keyHeader);
     var json = jsonDecode(utf8.decode(response.bodyBytes));
-    print(response.body);
     if (response.statusCode == 200) {
       return json['extendedIngredients'].map<Ingredients>((data) {
         return Ingredients.fromJson(data);
@@ -63,7 +60,6 @@ class FetchAPI {
     var response = await http.get('$APIURL/recipes/$id/analyzedInstructions',
         headers: keyHeader);
     var json = jsonDecode(utf8.decode(response.bodyBytes));
-    print(json);
     if (response.statusCode == 200) {
       return json[0]['steps'].map<Instructions>((data) {
         return Instructions.fromJson(data);

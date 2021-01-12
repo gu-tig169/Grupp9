@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:projectapp/models/joke_model.dart';
 import 'package:projectapp/models/trivia_model.dart';
 import 'package:projectapp/service/fetch_api.dart';
+import 'package:projectapp/widgets/appBar_widget.dart';
 
 class JokesView extends StatefulWidget {
   @override
@@ -23,19 +23,8 @@ class _JokesViewState extends State<JokesView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.greenAccent[100],
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          backgroundColor: Colors.greenAccent[100],
-          title: Text("Jokes/Trivias",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black)),
-          centerTitle: true,
+        appBar: CustomAppBar(
+          title: "Jokes/Trivias",
         ),
         body: Center(
             child: SingleChildScrollView(
